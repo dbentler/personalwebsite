@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Parent Template for Banner and Navbar</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+
+</head>
+<body>
+    <div>
+        <image src="{{ url_for('static', filename='img/banner.png') }}" class="bentler_banner">
+    </div>
+    {% block navbar %}
+    
+    {{nav.my_navbar.render()}}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

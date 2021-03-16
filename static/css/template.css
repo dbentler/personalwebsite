@@ -1,53 +1,55 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
-    /*background-color: #F5F5F5;*/
 }
 
 .bentler_banner {
     padding: 0px;
+    margin: 0px;
     position: relative;
     width: 100%;
     height: auto;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-}
-
-.center_text {
+.center-text {
     text-align: center;
     color: #282828
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    height: auto;
+}
+
+.spacer-25px {
+    margin-top: 25px;
+}
+
+.tt_justify_right {
+    font-family: 'Lucida Console';
+    text-align: right;
+    line-height: 2;
+    color: #505050;
+}
+justify_right {
+    text-align: right;
+    line-height: 2;
+    color: #505050;
+}
 .justify_text {
     text-align: justify;
     margin-left: 384px;
     margin-right: 384px;
     line-height: 2;
     color: #505050;
+}
+
+.gray-i-like {
+    background: #7a7a7a
+}
+
+.general_center {
+    align-content: center;
 }

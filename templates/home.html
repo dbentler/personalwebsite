@@ -2,65 +2,52 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Darren Bentler</title>
+    <title>Darren Bentler | Home</title>
 </head>
 <body>
     {% extends "template.html" %}
     {% block content %}
 
-    <div class="center_text">
-        <h1>Welcome to my Website!</h1>
-    </div>    
-    
-    <div class="justify_text">        
-        <p>
-        Hello there! My name is Darren Bentler. I'm a 20 year old Computer Science and Engineering major at New York University's Tandon School of Engineering, and I currently reside in Long Island, New York.
-        The website is still in active development as I'm writing this (I created it within 2 hours on March 13th, 2021.) So of course it's going to be rough around the edges a bit.
-        I'm sure you've had one of several thoughts pop into your head upon reaching this home page. I'll try to address them now:
-        </p>
-    </div>
-    
-    <div class="center_text">
-        <h2>"Why did you create it?"</h2>
-    </div>
+    <div class="container-fluid">
+        <div class="container">
+            <h1 class="center-text spacer-25px">Welcome to my Website!</h1>
+            <div class="container spacer-25px">
+                <image src="{{ url_for('static', filename='img/profile_picture.png') }}" class="center">
+            </div>
+            <!--Type writer letter containers-->
+            <div class="container">
+                <h2 class="center-text spacer-25px"> A Short Introduction</h2>
+                <p style="font-family:'Lucida Console', monospace">South Huntington, New York, USA <br />16 March 2021<br />12:07AM</p>
 
-    <div class="justify_text">
-        <p>
-            The purpose of this website is to be a place where I can show off what I've been working on and what I have created in an organized - efficient layout. Recruiters who are wondering what I'm capable of could go to "Projects", select "Programming" and see a list of work along with information
-            regarding why I took time to create them, and how they were applied in a real world setting.
-        </p>
-        <p>
-            This website itself is one of those projects. I started working on it on March 12th, 2021 in order to learn/better understand both front-end and back-end web-development. The backend is currently being handled by Flask, a web-application written in Python.
-        </p>
-        <p>
-            The source code of the website can be found on my github, which you can find **here** or via the navigation bar up top.
-        </p>
-    </div>
+                <p style="font-family:'Lucida Console', monospace">
+                    To whom it may concern,<br /> <br />
+                    I hope this webpage finds you well. My name is Darren Bentler. I'm a 20 year going on 21 (June 05) Computer Science student at New York University's Tandon School of Engineering and I currently reside on Long Island, New York.<br /> <br />
+                    This website is one of my personal side projects that I'm developing in order to learn both front-end and back-end web development. It currently utilizes Flask (a web application written in Python), and Bootstrap (a front-end open source web development toolkit.).<br />
+                    <br />I hope to eventually get it to a state where I'm able to showcase all of the projects I've been working on or completed.<br /><br />
 
-    <div class="center_text">
-        <h2>
-            "Why does it look so barebones/bad/terrible?"
-        </h2>
-    </div>
-
-    <div class="justify_text">
-        <p>
-            Fair question. When I started this website, I had little expierence with HTML, CSS, Flask, etc. I'm also not that much of a visual designer. That being said, I wanted to challenge myself and create this website from the ground up.
-        </p>
-
-        <p>
-            I didn't want to use a free bootstrap CSS template, nor did I want to have any unnecessary animations, like logos of programming languages I'm experienced in flying in (or fading in) to the center of the page. Nor did I want some infinite scroll feature in which
-            those animations would play as you scroll further down the page.
-        </p>
-        <p>
-            While I do enjoy a good looking webpage - I also believe there tends to be a degree of "overdesigning" - or "overdelivery" in modern web-development when it comes to getting your message across.
-        </p>
-        <p>
-            My message to you is "Here's some stuff I've made, come check it out. Impressed? Here's a way to contact me!". I don't need any fancy animations or pop-ins to show you that. I, as the designer, want you, the user, to access all of this information as easily and quickly as possible.
-            Which I'm sure is something you also wish to do as well. 
-
-            And hence, the website sure doesn't look the best. (However: I may add a "Design" category to show that I am, in fact, capable of creating such a website.)
-        </p>
+                    My current roadmap is as follows (You can currently following the development on my github):<br /><br />
+                    [WE ARE HERE] Finalize landing page => <br />
+                    Design and Implement About Me page =><br />
+                    Create "About Me" video where I describe myself via a informal video-essay and include a transcript for those who wish to read at their own pace =><br />
+                    Create projects page tab, where I'll post every project I've ever made or worked on with a blog-like backstory for context for each individual item => <br />
+                    Create Contact, and Resume Pages => <br />
+                    Go Live! =><br />
+                    Create "History of this Website" Page, as I've been documenting my creation of this website and feel like it deserves it's own special page.<br />
+                    <br />
+                    At least that's the roadmap plan as of March 16th, 2021. I'm going to try my best to stick as close as possible to it - but I also won't hesitate to take a detour to either redesign or implement additional features.<br /><br />
+                    Anyway, feel free to reach out to me at any time via the resources provided in the Contact page. Also, let me know what you think of the website in general. I'm refusing to use any free themes or applications like Adobe Dreamweaver, as I feel like
+                    that's not in the spirit of this project.<br /><br />
+                    -Darren Bentler
+                </p>
+            </div>
+        </div>
+        <div class="inner spacer-25px">
+            <p class="center-text">
+                Powered by
+                <a href="https://www.77smu.us">Forsell's Dad</a>
+                © Darren Bentler 2021
+            </p>
+        </div>
     </div>
     {% endblock %}
 </body>

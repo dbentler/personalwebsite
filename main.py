@@ -1,17 +1,7 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
-from flask_nav import Nav
-from flask_nav.elements import Navbar, Subgroup, View, Link, Text, Separator
 
 app = Flask(__name__)
-
-#nav = Nav(app) # Navbar baby
-
-#nav.register_element('my_navbar', # Name of Navbar
-#                     Navbar('thenav', # Navbar for html reference
-#                     View('Home', 'home'), # View function :: View(<Text displayed>, <link that passthroughs to @app.route>)
-#                     View('About Me', 'about')))
-
 
 
 @app.route("/") # Listens for <website>/<subpage>

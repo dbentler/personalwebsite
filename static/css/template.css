@@ -1,5 +1,5 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Courier New, Courier, monospace;
 }
 
 .bentler_banner {
@@ -52,4 +52,19 @@ justify_right {
 
 .general_center {
     align-content: center;
+}
+
+span {
+    display: inline-block;
+    border-bottom: 1px solid #505050;
+    padding-bottom: 2px;
+
+}
+
+h2 {
+    font-weight: normal;
+}
+
+.graph-paper {
+    background-image: url('img/background.jpg');
 }

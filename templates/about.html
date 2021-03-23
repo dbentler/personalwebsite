@@ -7,13 +7,74 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
+    <div class="container-fluid">
+        <div class="container">
+            <h2 class="center-text spacer-25px unbold">
+                <span>About 
+                    <strong style="color: red">Me</strong>
+                </span>
+            </h2>
+        </div>
+        <div class="container spacer-25px">
+            <p class="center-text">
+                It's pretty hard to gauge who someone is as a person without having an active conversation with them.<br>
+                Especially when you're able to only go off some text that follows a madlib style format: <br><br>
+                "Hello! I'm [name]. I love [animal], [activities], and I'm passionate about programming."<br><br>
 
-    <h1> About Me </h1>
-    <p> There's not much to talk about myself.</p>
-    <p>
-        The eventual goal is to have a showcase of my work, my skills, some work history and an eventual detailed about me page.
-    </p>
-
+                I don't want to follow the madlib style. So I've created a short "About Me" video that you<br>
+                can watch below. If you don't have the time to watch - that's fine. I've also added a transcript<br>
+                and a simple "about me" under that.<br>
+                Enjoy!
+            </p>
+        </div>
+        <!--Youtube video container. Copy and pasted embeded source when video is ready-->
+        <div class="container spacer-25px">
+            <iframe width="1280" height="720" src="https://www.youtube.com/embed/AjWfY7SnMBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <!--Transcript and TL;DR-->
+        <div class='container moreTextContainer spacer-25px'>
+            <h3 class="center-text">Transcript</h3>
+            <!--Transcript will eventually go here-->
+            <div class="container text-center">
+                <span id="more" class="spanP">
+                    Lorem Ipsum I'm placeholder text.
+                </span>
+            </div>
+            <div class="text-center">
+                <button type="button" id="btn" onclick="revealText()" class="btn btn-outline-warning">Reveal</button>
+            </div>
+        </div>
+        <!--Simple About Me-->
+        <div class="container">
+            <h2 class="center-text spacer-25px unbold">
+                <span>
+                    About Me
+                    <strong style="color: red">(SIMPLE)</strong>
+                </span>
+            </h2>
+            <div class="container spacer-25px">
+                <p class="text-center">
+                    Hi there! My name is Darren Bentler. I'm currently 21 years old and I live in South Huntington, New York.<br>
+                </p>
+            </div>
+            <div class="container spacer-25px">
+                <image src="{{ url_for('static', filename='img/profile_picture.png') }}" class="center"></image>
+            </div>
+            <div class="container spacer-25px">
+                <p class= "center-text">
+                    I started programming in high school - around my sophomore year. I wanted to make simple plugins with <br>
+                    the BukkitAPI for a Minecraft server my friends and I were hosting. Of course I didn't know much<br>
+                    back then and I ended up signing up for a JavaScript class in my high school. (everyone has an origin story).<br><br>
+                    
+                    Since then, I've moved on to learning Python, C++, C#, and Java. <br><br>
+                    Anyway, here are some quick facts about me: <br><br>
+                    - I'm currently employed as a Barista at my local Starbucks. <br>
+                    - My favorite superhero is MCU's Iron Man/Tony Stark. <br>
+                    - I'm self driven, and love learning new things. <br>
+                </p>
+            </div>
+        </div>
+    </div>
     {% endblock %}
 </body>
 </html>

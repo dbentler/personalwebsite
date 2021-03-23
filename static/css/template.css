@@ -61,10 +61,29 @@ span {
 
 }
 
+.spanP{
+    border-bottom: none;
+    padding-bottom: none;
+}
+
 h2 {
     font-weight: normal;
 }
 
 .graph-paper {
     background-image: url('img/background.jpg');
+}
+
+.moreTextContainer{
+    border-style: solid;
+    border-color:rgb(248, 235, 219);
+    background-color: rgb(248, 235, 219);
+}
+
+.goRight{
+    float: right;
+}
+
+#more{
+    display: none;
 }

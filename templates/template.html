@@ -10,11 +10,9 @@
 
 </head>
 <body style="background-color: #F5F5F5">
-    <div>
-        <image src="{{ url_for('static', filename='img/banner.png') }}" class="bentler_banner">
-    </div>
-    <!--Bootstrap's Navbar-->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class = "container-fluid edgeToedge border-bottom">
+            <!--Bootstrap's Navbar-->
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,9 +24,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="about">About Me</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects">Projects</a>
+                </li>
             </ul>
         </div>
     </nav>
+    </div>
         {% block content %}
         {% endblock %}
     <!--Bootstrap JavaScript-->
@@ -39,7 +41,7 @@
     <footer class="inner spacer-25px">
         <p class="center-text">
             Powered by
-            <a href="https://www.77smu.us">Me, Myself, and I</a>
+            <a href="https://www.77smu.us">duct tape and pure will</a>
             © Darren Bentler 2021
         </p>
     </footer>

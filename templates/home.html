@@ -7,41 +7,32 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
-    
+    <div class="container-fluid edgeToedge">
+        <image src="{{ url_for('static', filename='img/new_banner.png') }}" class="bentler_banner">
+    </div>
     <div class="container-fluid">
         <div class="container">
-            <h1 class="center-text spacer-25px">WELCOME</h1>
-            <div class="container spacer-25px">
-                <image src="{{ url_for('static', filename='img/profile_picture.png') }}" class="center">
-            </div>
             <!--Type writer letter containers-->
             <div class="container">
+                <h1 class="center-text spacer-25px unbold">
+                    <span>A <strong style="color:red">Quick</strong> Introduction</span>
+                </h1>
+                <div class="container spacer-25px">
+                    <image src="{{ url_for('static', filename='img/profile_pic.png') }}" class="center">
+                </div>
+                <div class="center-text spacer-25px">
+                    <p style="font-size: 24px;">
+                        Welcome! I'm a Computer Science undergrad at New York University's Tandon School of Engineering, and
+                        I currently live in South Huntington, New York. <br> <br>
 
-                <h2 class="center-text spacer-25px unbold">
-                    <span>A <strong style="color:red">Short</strong> Introduction</span>
-                </h2>
-                <p style="font-family:'Lucida Console', monospace">South Huntington, New York, USA <br />16 March 2021<br />12:07AM</p>
+                        Outside of school, I work on personal projects, create and edit videos, and I play badminton.<br> <br>
 
-                <p style="font-family:'Lucida Console', monospace">
-                    To whom it may concern,<br /> <br />
-                    I hope this webpage finds you well. My name is Darren Bentler. I'm a 20 year going on 21 (June 05) Computer Science student at New York University's Tandon School of Engineering and I currently reside on Long Island, New York.<br /> <br />
-                    This website is one of my personal side projects that I'm developing in order to learn both front-end and back-end web development. It currently utilizes Flask (a web application written in Python), and Bootstrap (a front-end open source web development toolkit.).<br />
-                    <br />I hope to eventually get it to a state where I'm able to showcase all of the projects I've been working on or completed.<br /><br />
+                        Feel free to look around the site. You can find more detailed information via the navigation
+                        bar above.<br> <br>
 
-                    My current roadmap is as follows (You can currently following the development on my github):<br /><br />
-                    [WE ARE HERE] Finalize landing page => <br />
-                    Design and Implement About Me page =><br />
-                    Create "About Me" video where I describe myself via a informal video-essay and include a transcript for those who wish to read at their own pace =><br />
-                    Create projects page tab, where I'll post every project I've ever made or worked on with a blog-like backstory for context for each individual item => <br />
-                    Create Contact, and Resume Pages => <br />
-                    Go Live! =><br />
-                    Create "History of this Website" Page, as I've been documenting my creation of this website and feel like it deserves it's own special page.<br />
-                    <br />
-                    At least that's the roadmap plan as of March 16th, 2021. I'm going to try my best to stick as close as possible to it - but I also won't hesitate to take a detour to either redesign or implement additional features.<br /><br />
-                    Anyway, feel free to reach out to me at any time via the resources provided in the Contact page. Also, let me know what you think of the website in general. I'm refusing to use any free themes or applications like Adobe Dreamweaver, as I feel like
-                    that's not in the spirit of this project.<br /><br />
-                    -Darren Bentler
-                </p>
+                        -Darren Bentler
+                    </p>
+                </div>
             </div>
         </div>
     </div>

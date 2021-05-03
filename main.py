@@ -13,6 +13,9 @@ def home(): # Function that is ran when <link>/<subpage> is true
 def about():
     return render_template("about.html")
 
-#nav.init_app(app)
+@app.route("/projects")
+def projects():
+    return render_template("projects.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

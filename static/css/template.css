@@ -12,6 +12,13 @@
     max-height: 100%;
 }
 
+.icon{
+    width: auto;
+    max-width: 120px;
+    height: auto;
+    max-height: 120px;
+}
+
 .fixed{
     position: fixed;
 }
@@ -22,7 +29,11 @@
 
 .center-text {
     text-align: center;
-    color: #282828
+    color: #282828;
+}
+
+.center-icon{
+    display: flex;
 }
 
 .center {

@@ -7,6 +7,97 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
+    <div class="container-fluid spacer-60px">
+        <div class="container">
+            <h2 class="center-text spacer-25px unbold">
+                <span>My <strong style="color: red">Projects</strong></span>
+            </h2>
+            <p class="center-text"> 
+                Click on an image to learn more about a specific project. <br><br>
+                Projects are ordered from most recent to least recent. <br><br>
+                Alternatively, you can click any of these buttons to immediately go to a project<br>
+                (If the button is gray, I'm still working on the write-up):
+            </p>
+            <div class="container center-text">
+                <a href="/projects/construction">
+                    <button type="button" id="back" onclick="" class="btn btn-dark btn-lg" disabled>Silicoin</button>
+                </a>
+                <a href="/projects/mywebsite">
+                    <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">darrenbentler.com</button>
+                </a>
+                <a href="/projects/construction">
+                    <button type="button" id="back" onclick="" class="btn btn-dark btn-lg" disabled>Petals Around the Rose</button>
+                </a>
+                <a href="/projects/construction">
+                    <button type="button" id="back" onclick="" class="btn btn-dark btn-lg" disabled>LW-Network</button>
+                </a>
+            </div>
+        </div>
+        <div class="container spacer-25px">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Silicoin: A P2P Medium of Exchange for Virtual Goods</span>
+            </h4>
+            <a href="/projects/construction">
+                <img src="{{ url_for('static', filename='img/silicon.png')}}" class="center">
+            </a>
+            <p class="center-text"><i>Sick logo, I know</i></p>
+            <p style="font-size: 20px;">
+                My cryptocurrency adventure with C++. Through this project, I work on creating a working blockchain, implement proof of work, and I eventually
+                expand my scope to process transactions. My eventual end goal is for the cryptocurrency to be a medium of exchange that could be traded for virtual
+                goods outside of the scope of a game. Think if you were to use Monopoly Play Money in Settlers of Catan for trades.
+            </p>
+        </div>
+        <div class="container spacer-25px">
+            <h4 class="center-text spacer-25px unbold">
+                <span>darrenbentler.com</span>
+            </h4>
+            <a href="/projects/mywebsite">
+                <img src="{{ url_for('static', filename='img/new_banner_2.png')}}" class="center">
+            </a>
+            <p class="center-text"><i>I really like this banner.</i></p>
+            <p style="font-size: 20px;">
+                Kind of like a devblog for the website. You get to see some early screenshots of the website before I started "website2.0", an overhaul of the front-end.
+                Here I go over what I learned from making this website, along with thoughts of expansion and possibly my plans for dynamic content.
+            </p>
+        </div>
+        <div class="container spacer-25px">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Petals Around the Rose</span>
+            </h4>
+            <a href="/projects/construction">
+                <img src="{{ url_for('static', filename='img/petal_around_the_rose.png')}}" class="center">
+            </a>
+            <p class="center-text"><i>The answer is 6.</i></p>
+            <p style="font-size: 20px;">
+                My implementation of the "Petals Around the Rose" game. 
+                To quote wikipedia, "Petals Around the Rose is a mathematically challenging puzzle in which the object is to work out the formula by which a number is derived from the roll of a set of five or six dice".
+                A simple concept, and fun game to mess with your friends with (if you figure it out of course).<br><br>
+                It's not as impressive as some other things on this list, but it holds a special place in my heart as the first semi-complex C++ program I wrote that compiled out of the box.
+            </p>
+        </div>
+
+        <div class="container spacer-25px">
+            <h4 class="center-text spacer-25px unbold">
+                <span>The LW Network</span>
+            </h4>
+            <div class="center-text">
+                <a href="/projects/construction">
+                    <img src="{{ url_for('static', filename='img/lw_network.png')}}" style="width: auto; max-width: 768px; height: auto; max-height: 576px;">
+                </a>
+            </div>
+            <p class="center-text"><i>Old background of our Forums, showing me, Brock, and Justin.</i></p>
+            <p style="font-size: 20px;">
+                A series of Minecraft game servers, the LoneWolves Network came to be originally from the youtuber "Jeremy". It shut down in 2015,
+                and with Jeremy's permission/blessing, my friends and I started a passion project to revive it since Minecraft was trending again.
+                We quickly grew past our initial goals. Before we knew it, we had a player base and community of hundreds of players. <br><br>
+
+                I was the face of the server to our players, and I worked on implementing features via plugins built with the Spigot API. I also was in
+                charge of server management, and I migrated the server over to an OVH box and performed maintence. <br><br>
+
+                At the end of our run, we had generated $21,000 USD in revenue and exceeded the Discord server member limit (1,000 back in 2019). 
+            </p>
+        </div>
+    </div>
     {% endblock %}
 </body>
 </html>

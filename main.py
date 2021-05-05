@@ -17,5 +17,13 @@ def about():
 def projects():
     return render_template("projects.html")
 
+@app.route("/projects/construction")
+def construction():
+    return render_template("construction.html")
+
+@app.route("/projects/mywebsite")
+def mywebsite():
+    return render_template("mywebsite.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

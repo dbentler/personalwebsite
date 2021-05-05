@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Darren Bentler | My Website</title>
+</head>
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div class="container-fluid spacer-60px">
+        <div class="container">
+            <h2 class="center-text spacer-25px unbold">
+                <span>Projects: My<strong style="color: red"> Webite</strong></span>
+            </h2>
+            <img src="{{ url_for('static', filename='img/new_banner_2.png')}}" class="center">
+            <div class="container center-text spacer-25px">
+                <a href="https://github.com/dbentler/personalwebsite">
+                    <button type="button" id="linkedin" onclick="" class="btn btn-dark btn-lg">Website Source Code</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Why does it Exist?</span>
+            </h4>
+            <p class="story-time">
+                Why do any of us exist? Is it just so suffer? Jokes aside, I wanted a way to showcase myself online in a way that conveys
+                both what I can do, and my personality (hence why I make some terrible jokes here and there). It allows recruiters to get a
+                sense of what I'm capable of, and who I am, so they can have a better idea on if I'm a good fit for their company. <br><br>
+
+                Of course, I also created it to expand my online footprint. When you google "Darren Bentler", all you get is my LinkedIn, some
+                incorrect personal information, and some poems I wrote for AP Literature back in high school that were uploaded to my teacher's
+                website. <br><br>
+
+                What if there's someone who's searching for me and wants to get in contact? Perhaps an old friend or relative who lives in another
+                country? If they find this website, they'll be able to find me and see what I've been up to. They'll also have several different ways
+                of getting in contact with me. That's why this website is here. <br> <br>
+
+                I also wanted to experient with the Flask framework and web-design.
+            </p>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Website 1.0: Early Days</span>
+            </h4>
+            <p class="center-text">Getting off the Ground</p>
+            <p class="story-time">
+                What you're about to see is the very first version of this site that I built. I remember thinking to myself "Yeah I'll have a banner
+                up top, and it'll be all vapor-wavy, and it'll have my name in big letters like a brand!". <br><br>
+
+                While I'd like to think of myself as a creative person, I'm quite bad at actually turning the thought in my head into tangible results.
+                So of course, the first version came out looking just as you expected:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/ugly_1.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px; position: relative;">
+                <p class="center-text"><i>Oh my god...</i></p>
+            </div>
+            <p class="story-time">
+                Okay... maybe if I add a NavBar and set the banner to actually go to the edge of the screen, it'll look somewhat better. Right? The reason
+                it looks so bad is because it's so empty. There's nothing to balance out the vapor-wave colors from the banner!<br><br>
+
+                So I added the NavBar prototype:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/ugly_nav.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px; position: relative;">
+                <p class="center-text"><i>It's just an unordered list for now.</i></p>
+            </div>
+            <p class="story-time">
+                And then I did some nerd stuff and made that unordered list into an unordered list but with CSS:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/ugly_nav2.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px; position: relative;">
+                <p class="center-text"><i>It does not look better at all.</i></p>
+            </div>
+            <p class="story-time">
+                Keep in mind that this was before I went ahead and added the Bootstrap framework to my website. So every little thing I was doing, I was
+                making myself. Here's the original code of that NavBar too, since I used NavBar to create it:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/ugly_code.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px; position: relative;">
+                <p class="center-text"><i>At least the code isn't that ugly... right?</i></p>
+            </div>
+            <p class="story-time">
+                Discouraged I was, but not defeated! I decide I will try one last thing: Actually put some content on that page to see how that would look.
+                I quickly hopped into home.html and typed up some stuff, and the did some formatting with CSS. And lo and behold, Website 1.0 had a finished
+                home page:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/ugly_3.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px;">
+                <p class="center-text"><i>At least it's starting to LOOK like a website...</i></p>
+            </div>
+            <p class="story-time">
+                Anyway, to finish up Website 1.0 I started to play around with Placeholder images. I also made the correct decision and got set up with
+                Bootstrap, and I replaced my god awful Flask navbar with a Bootstrap styled one. Here was the finished product:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/ugly_final.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px;">
+                <p class="center-text"><i>Honestly the banner was what was holding this back.</i></p>
+            </div>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Website 2.0</span>
+            </h4>
+            <p class="center-text">
+                <i>Building off what I learned from 1.0</i>
+            </p>
+            <p class="story-time">
+                After not working on the website for a few weeks because of how ugly it was, I decided to do some soul searching on the internet. What I really wanted
+                was just some inspiration on how I should layout the home page, as first impressions are important. I wanted the home page to be the quick reference guide.
+                Something like, "Hey! Here's my skills. Here's what I've made and my experience. Here's how to contact me!". <br><br>
+
+                I eventually stumbled upon a friend from high school's website, who is also a Software Developer. His name is Hans, and I was so impressed with his formatting I decided
+                to replicate some parts of it. Hans, if you're reading this, your website saved mine from being a disgusting mess. If you're a recruiter who's now interested in Hans, I'm
+                sorry to tell you but he's already taken by another corporation.<br><br>
+
+                Anyway, now with new-found inspiration and a proper design, I did what anyone else would do:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/delete_website.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px;">
+                <p class="center-text"><i>Recreation for dramatic effect.</i></p>
+            </div>
+            <p class="story-time">
+                I got to work rebuilding my website from the ground up. The first thing on my mind was creating a new banner. Luckily, a few days before I started on website 2.0, my friend Marco Chiriboga
+                agreed to take some pictures of me so that I could post something on instagram. I hadn't posted in a couple of years, and I did want it to be somewhat up-to-date so people wouldn't think
+                I was dead. <br><br>
+
+                One of the pictures he took was actually really cool:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/og_beach.jpeg')}}" style="width: auto; max-width: 768px; height: auto; max-height: 1024px;">
+                <p class="center-text"><i></i></p>
+            </div>
+            <p class="story-time">
+                And after a little Photoshop trickery, I managed to create a much better looking banner. I also slapped on a black and white filter to make it a bit more dramatic (and it hide the
+                color repetiton from the rocks it make it a bit harder to tell it was expanded in photoshop).
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/og_banner.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px;">
+                <p class="center-text"><i>With the exception of Cove Neck in the background, I think I did alright. God bless the stamp tool and content-aware.</i></p>
+            </div>
+            <p class="story-time">
+                After some fooling around with CSS and reading up on the bootstrap documentation, I finally created the home page I wanted all along. Of course I did some minor changes too.
+                I realized I didn't want to have a banner on every page, and I set the navbar to always be at the top of the page no matter what. <br><br>
+
+                And just like that, I that leaves us here:
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/finished.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px;">
+                <p class="center-text"><i></i></p>
+            </div>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>The Future of the Website</span>
+            </h4>
+            <p class="story-time">
+                At the time of writing this, I'm currently working 8-hours a day on getting the website ready for launch (today is May 4th, 2021). As of right now, I do feel like it's ready,
+                and I'm researching on what host I should use. I'm probably going to go with Google Apps, as it seems like the cheapest and easiest option out of the rest. <br><br>
+
+                One thing that I don't really take advantage of is the fact that Flask is a dynamic framework. Right now, this site is completely static. I eventually want to make
+                some sort of cryptography game inspired by the Cicada-3301 games on the site to challenge my friends with. <br><br>
+
+                I also want to eventually figure out a way to render *.md files on the site instead of having to write HTML, as it currently takes an hour+ to write a simple page.
+                Not only that, but getting markdown files to render would help tremendously when I get around to writing about my other projects where I have to explain code (I'm currently
+                looking into Flask-Markdown as solution). <br><br>
+
+                Anyway, thank you for reading up about the history of the website. I hope you enjoyed the tale of how it came to be!
+            </p>
+        </div>
+        <div class="container center-text spacer-25px">
+            <a href="/projects">
+                <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">Go Back to Projects</button>
+            </a>
+            <a href="https://github.com/dbentler/personalwebsite">
+               <button type="button" id="linkedin" onclick="" class="btn btn-dark btn-lg">Website Source Code</button>
+            </a>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

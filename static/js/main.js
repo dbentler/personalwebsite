@@ -20,8 +20,7 @@ function redirectGitHub(){
 
 function redirectProjects(){
     if(document.getElementById("projects")){
-        // location.href = "url/projects"
-        console.log("Projects page isn't set up just yet - sorry!")
+        location.href = "/projects"
     }
 }
 

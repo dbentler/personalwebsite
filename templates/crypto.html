@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Darren Bentler | Blockchain</title>
+</head>
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    <script>hljs.highlightAll();</script>
+    <div class="container-fluid spacer-60px">
+        <div class="container">
+            <h2 class="center-text spacer-25px unbold">
+                <span>Projects: Making a <strong style="color: red;">Blockchain</strong></span>
+            </h2>
+            <img src="{{ url_for('static', filename='img/silicon.png')}}" class="center">
+            <p class="center-text">One day I'll make a better logo...</p>
+            <div class="container center-text spacer-25px">
+                <a href="https://github.com/dbentler/fccCoin_in_CPP">
+                    <button type="button" id="linkedin" onclick="" class="btn btn-dark btn-lg">Blockchain Source Code</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Introduction</span>
+            </h4>
+            <p class="story-time">
+                I've always been intrigued by cryptocurrencies. I remember when I was 13 and stumbled across Bitcoin from a YouTube video,
+                and I instantly wanted to get my hands on some. I downloaded the Bitcoin core wallet and created an address and looked online
+                on how I could mine some for myself. But alas, my 13 year old brain could not comprehend the technical knowledge required to
+                join a mining pool on my mother's HP Laptop running Windows Vista. <br><br>
+
+                "That's fine", I thought, "I'll just purchase some". Those dreams were quickly shut down as the price of one Bitcoin back then
+                was ~$250. This was a price an unemployed 13 year old who spent his time playing <i>Halo Reach</i> with his friends could not
+                afford. <br><br>
+
+                Anyway, fast forward to 2021. Over the years, I managed to get my hands on various cryptos: Bitcoin Cash, Ethereum, Dogecoin.
+                I mostly completely forgot about holding them, until one day I hear that the price of Dogecoin, a cryptocurrency created as a joke,
+                had risen to 31 cents. I quickly checked my wallet and lo and behold, the 81 Dogecoin I was holding was worth $31.00 USD (at the time
+                of writing this, those 81 DOGE are now worth $50.82 USD). <br><br>
+
+                With my interest in cryptocurrency suddenly renewed, I decided: "Hey, why not see if I could create my own blockchain? It'll be good
+                coding practice and I get a little crypto for my friends and I to fool around with". <br><br>
+            </p>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Selecting a Language and Learning Fundamentals</span>
+            </h4>
+            <p class="story-time">
+                I knew right from the onset I wanted to use C++ for this personal project, mostly because one of my friends doubted my ability in the
+                language. The only issue was: I didn't have a single clue on how to start. <br><br>
+
+                The first thing I wanted to understand is exactly HOW a blockchain works. I stumbled upon this very nice video which explains the basic
+                fundamentals by YouTuber <i>3Blue1Brown</i>:
+            </p>
+            <div class="center-text">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/bBC-nXj3Ng4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="story-time spacer-25px">
+                In the video, <i>3Blue1Brown</i> goes into great detail about <strong>HOW</strong> the public ledger works with digital signatures.
+                Not only that, he also goes into how PoW works with the SHA256 cryptographic hash functions. And exactly how "mining" works.
+                I'm not going to be directly into the fundamentals on how these things work in this specific section, but I will once we start looking
+                at, you guessed it, <i>the code</i>!
+            </p>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>To Fork, To Tokenize, or Build it Yourself</span>
+            </h4>
+            <p class="story-time">
+                Many of the mainstream cryptocurrencies today were built off of Forks of another coin. Litecoin was a fork of Bitcoin, Dogecoin was a fork of Litecoin, etc.
+                I didn't want to just make a fork of a coin, as then all I'd have to do is change a few variables and be done with it. <br><br>
+                
+                I also didn't want to make a Token, which is a coin that runs on top of an already existing blockchain. That would also defeat the purpose
+                of this whole thing, which was to "build my own blockchain". <br><br>
+
+                So of course, I googled "How to build your own blockchain", and one of the first links my eyes saw was an article by Free Code Camp's
+                <i>Alfrick Opidi</i>.
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/fcc.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px; position: relative;">
+                <a href="https://www.freecodecamp.org/news/create-cryptocurrency-using-python/">
+                    <p class="center-text">Click here to go to the article.</p>
+                </a>
+            </div>
+            <p class="story-time">
+                In the article, Opidi used Python - I want to use C++. But then I had a great idea: "Why don't I just use the article as a guide to write the C++ fundamentals?" <br><br>
+                
+                And so, that's kind of what I did. It was a great learning experience too, and I got to learn more about specific Python modules and had to get creative with
+                reimplementing them in C++. It was also kind of frustrating, and it made me appreciate type declarations since guessing what a random variable is just by name
+                can be difficult. <br><br>
+
+                With a feasible guide, I decided it was finally time to get started on writing the code.
+            </p>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Building Blocks</span>
+            </h4>
+            <p class="center-text">Warning: Code Ahead!</p>
+            <p class="story-time spacer-25px">
+                The first thing I did was look over the article and figure out what I should pieces of code I should delegate to other classes. Opidi had made all of the code
+                within a single <code>py</code> file. While I could do this in C++, I also wanted to practice good coding styles. <br><br>
+
+                The first thing I did was create two header files: One for the Block object, and the other for the Blockchain. I decided to work on the Block object first, since
+                well... you can't really have a Blockchain without Blocks.<br><br>
+
+                Blocks are actually quite simple objects. At their core, they store 5 separate data types: <br>
+                <ul class="story-time">
+                    <li>An Index Number of type <code>int</code>, which tells users where the block is located within the Blockchain.</li>
+                    <li>A Proof Number of type <code>int</code>, a number which can be used to verify the block in the chain.</li>
+                    <li>The hash of the previous block, of type <code>string</code>.</li>
+                    <li>Some form of data. Such as transactions or smart contracts. It needs to be able to grow, so <code>std::array</code> is out of the question.
+                        This can be stored in a <code>std::vector</code></li>
+                    <li>A timestamp of when the block was created, which can be represented as <code>std::string</code></li>
+                </ul>
+            </p>
+            <p class="story-time">
+                Of course, these data types cannot be changed once the block is created, or else the entire blockchain could be compromised. So what I did when I created
+                the <code>Block.h</code> file was store all of that data within private variables:
+            </p>
+            <div class="container center-text">
+                <pre>
+                    <code class="lang-cpp">
+                        #ifndef BLOCK_H 
+                        #define BLOCK_H
+                        
+                        #include &lt;iostream&gt;
+                        #include &lt;time.h&gt;
+                        #include &lt;string&gt;
+                        #include &lt;vector&gt;
+    
+                        class Block{
+                            private:
+                                int blockIndex; 
+                                int blockProofNum;
+                                std::string blockPrevHash;
+                                std::vector&lt;std::string&gt; blockData;
+                                std::string blockTimeStamp;
+                        };
+                        #endif
+                    </code>
+                </pre>
+                <p class="center-text">Syntax Highlighting provided by <a href="https://prismjs.com/">Prism</a></p>
+            </div>
+            <p class="story-time">
+                Of course, while we're in Block.h we might as well set up our function prototypes. We'll also need a cryptographic hashing function. 
+                I chose to go with SHA256, which I obtained as a header file as well. I didn't feel the need to
+                download a whole cryptographic library for just one small project.
+
+                Below is the completed <code>Block.h</code> file with all of our function protoypes set up.
+                I didn't include the <code>SHA256.h</code> as it's quite large. If you're interested in checking it out, feel free to check this project's source code.
+            </p>
+            <div class="container center-text">
+                <pre>
+                    <code class="lang-cpp">
+                        #ifndef BLOCK_H 
+                        #define BLOCK_H
+                        
+                        #include &lt;iostream&gt;
+                        #include &lt;time.h&gt;
+                        #include &lt;string&gt;
+                        #include &lt;vector&gt;
+    
+                        class Block{
+                            private:
+                                int blockIndex; 
+                                int blockProofNum;
+                                std::string blockPrevHash;
+                                std::vector<std::string> blockData;
+                                std::string blockTimeStamp;
+                                
+                            public:
+                                Block(const int& index, const int& proofNum, const std::string& prevHash, const std::vector&lt;std::string&gt;& data);
+                        
+                                ~Block();
+                        
+                                std::string calculateHash();
+                        
+                                friend std::ostream& operator <<(std::ostream& os, const Block& block);
+                        
+                                //Time
+                                friend const std::string currentDateTime();
+                        
+                                //Helper functions to access private block variables.
+                                int checkIndex();
+                                std::string checkTimeStamp();
+                                std::string checkHash();
+                                int getProofNum();
+                        };
+                        
+                        std::ostream& operator <<(std::ostream& os, const Block& block);
+                        
+                        const std::string currentDateTime();
+                        
+                        #endif
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                With our function prototypes set up, we can start properly defining <code>Block.cpp</code>. What better place to start than defining our constructor? <br><br>
+
+                The role of the constructor is build the block data, so all there really is to do is just assign the private variables to something:
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        #include "Block.h"
+
+                        Block::Block(const int& index, const int& proofNum, const std::string& prevHash, const std::vector&lt;std::string&gt;& data){
+                            blockIndex = index;
+                            blockProofNum = proofNum;
+                            blockPrevHash = prevHash;
+                            blockData = data;
+                            blockTimeStamp = currentDateTime();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                Everything seems good except for <code>blockTimeStamp</code>, which is expecting a return from <code>currentDateTime()</code>. Since I wanted our timestamp
+                to be human readable, we can define <code>currentDateTime()</code> as the following (and yes, I did get this code off of cppreference):
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        // Get current date/time, format is YYYY-MM-DD.HH:mm:ss
+                        const std::string currentDateTime() {
+                            time_t     now = time(0);
+                            struct tm  tstruct;
+                            char       buf[80];
+                            tstruct = *localtime(&now);
+                            // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
+                            // for more information about date/time format
+                            strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+                        
+                            return buf;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                Eventually, we'll also want to be able to print out the block with <code>std::cout</code> for viewing purposes. So with a little operator overloading...
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        std::ostream& operator <<(std::ostream& os, const Block& block){
+                            os << "{" << std::endl;
+                            os << "Block Index: " << block.blockIndex << std::endl;
+                            os << "Block Proof: " << block.blockProofNum << std::endl;
+                            os << "Previous Hash: " << block.blockPrevHash << std::endl;
+                            os << "Block Data: ";
+                            for(auto i : block.blockData){
+                               if(i != block.blockData.back()){
+                                    os << i << ", ";
+                                } else {
+                                    os << i;
+                                }
+                           }
+                           os << "\nBlock Time Stamp: " << block.blockTimeStamp << std::endl;
+                           os << "}" << std::endl;
+                           return os;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                Badda-bing badda boom! When we eventually use <code>std::cout</code> on our Genesis block, it'll come out nice and formatted like this:
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        //Letting x be a placeholder for an int or string
+                        {
+                        Block Index: 0
+                        Block Proof: 0
+                        Previous Hash: 0
+                        Block Data:
+                        Block Time Stamp: XX/XX/XXXX
+                        }
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                Utilizing <code>SHA256.h</code>, we can also very easily get the hash of all of this block's data. For now I just have all of the information
+                concatenate into a string, and then hash that resulting string.
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        std::string Block::calculateHash(){
+                            //TO DO, find a better way to calculate the hash of the block.
+                            std::string blockAsString;
+                            blockAsString = std::to_string(blockIndex) + std::to_string(blockProofNum) + blockPrevHash;
+                            std::string dataString;
+                            
+                            for (auto i : blockData){
+                                dataString += i;
+                            }
+                        
+                            blockAsString += (dataString + blockTimeStamp);
+                        
+                            return sha256(blockAsString);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                And with that, we now have a functioning Block object. It's able to store important information about itself, calculate it's hash, and output itself
+                in a user-readable format. With the exception of defining a few helper functions (which are used to just <code>return</code> private variables), we
+                are ready to begin building the blockchain. <br><br>
+
+                <i>I'll be utilizing those helper functions later on within the blockchain. If you want to see how they are defined, you can check out</i> <code>Block.cpp</code>
+                <i>on my github:</i>
+            </p>
+            <div class="container center-text spacer-25px">
+                <a href="https://github.com/dbentler/fccCoin_in_CPP/blob/main/src/Block.cpp">
+                    <button type="button" id="linkedin" onclick="" class="btn btn-dark btn-lg">Block.cpp Source Code</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Chaining Blocks Together</span>
+            </h4>
+            <p class="story-time">
+                Now that we have our <code>Block.cpp</code> and <code>Block.h</code> done, we can finally start work on building the blockchain. <br><br>
+                Here we want every new Block's previous hash to point to block that came before it. We also out block index to represent it's place
+                within our chain:
+            </p>
+            <div class="center-text">
+                <img src="http://spheregen.com/wp-content/uploads/2019/04/blockchain.png">
+                <p>Diagram of a blockchain.</p>
+            </div>
+            <p class="story-time">
+                We'll also need our blockchain to be secure, so we'll need it to do the following:
+                <ul class="story-time">
+                    <li>Construct the first (genesis) block.</li>
+                    <li>Construct new blocks for the chain.</li>
+                    <li>Check the validity of new blocks.</li>
+                    <li>Hold transactions that will then be added to the new block upon creation.</li>
+                    <li>Utilize proof of work as a way for users to verify and mine new blocks.</li>
+                </ul>
+            </p>
+            <p class="story-time">
+                With these factors in mind, we can set up our <code>Blockchain.h</code> file like this:
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        #ifndef BLOCKCHAIN_H
+                        #define BLOCKCHAIN_H
+                        
+                        #include "Block.h"
+                        
+                        class BlockChain{
+                            private:
+                            std::vector&lt;Block&gt; chain; // Keeps all blocks. Maybe a vector isn't the best for this?
+                            std::vector&lt;std::string&gt; currentData; // Keeps all completed transactions in the block.
+                        
+                        
+                            public:
+                                BlockChain();
+                                
+                                //Constructs Initial Block
+                                void constructGenesis();
+                        
+                                //Constructs and adds new block to chain.
+                                Block constructBlock(const int& proofNum, const std::string& prevHash);
+                        
+                                //Checks whether or not the Blockchain is valid
+                                bool checkValidity(Block& newBlock);
+                        
+                                //Adds a new transaction to the data of the transaction
+                                bool newData(const std::string& Sender, const std::string& Receiver, const std::string& Amount);
+                        
+                                // Protects blockchain from attack
+                                int proofOfWork(const int& lastProof);
+                        
+                                bool verifyProof(const int& lastProof, const int& proofNum);
+                        
+                        
+                                //Returns last block in the chain
+                                Block lastBlock();
+                        
+                                void viewLastBlock();
+
+                                //Prints out entire chain
+                                void viewChain();
+                        };
+                        
+                        #endif
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

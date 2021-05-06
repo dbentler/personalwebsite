@@ -36,8 +36,8 @@
                 afford. <br><br>
 
                 Anyway, fast forward to 2021. Over the years, I managed to get my hands on various cryptos: Bitcoin Cash, Ethereum, Dogecoin.
-                I mostly completely forgot about holding them, until one day I hear that the price of Dogecoin, a cryptocurrency created as a joke,
-                had risen to 31 cents. I quickly checked my wallet and lo and behold, the 81 Dogecoin I was holding was worth $31.00 USD (at the time
+                I completely forgot about holding them, until one day I hear that the price of Dogecoin, a cryptocurrency created as a joke,
+                had risen to 31 cents. I quickly checked my wallet and lo' and behold, the 81 Dogecoin I was holding was worth $31.00 USD (at the time
                 of writing this, those 81 DOGE are now worth $50.82 USD). <br><br>
 
                 With my interest in cryptocurrency suddenly renewed, I decided: "Hey, why not see if I could create my own blockchain? It'll be good
@@ -60,9 +60,9 @@
             </div>
             <p class="story-time spacer-25px">
                 In the video, <i>3Blue1Brown</i> goes into great detail about <strong>HOW</strong> the public ledger works with digital signatures.
-                Not only that, he also goes into how PoW works with the SHA256 cryptographic hash functions. And exactly how "mining" works.
-                I'm not going to be directly into the fundamentals on how these things work in this specific section, but I will once we start looking
-                at, you guessed it, <i>the code</i>!
+                Not only that, he also goes into how Proof of Work functions with the SHA256 cryptographic hash functions. Not only that, he also describes how "mining" works.
+                I'm not going to go directly into the fundamentals on how these things work in this specific section, but I will once we start looking
+                at - you guessed it - <i>the code</i>!
             </p>
         </div>
         <div class="container">
@@ -159,6 +159,8 @@
                         #ifndef BLOCK_H 
                         #define BLOCK_H
                         
+                        #include "SHA256.h"
+
                         #include &lt;iostream&gt;
                         #include &lt;time.h&gt;
                         #include &lt;string&gt;
@@ -395,7 +397,233 @@
                         #endif
                     </code>
                 </pre>
+                <p class="center-text"><i>Noncoders: I like your words magic man!</i></p>
             </div>
+            <p class="story-time">
+                Fantastic! I put <code>std::vector&lt;Block&gt; chain</code> and <code>std::vector&lt;string&gt; currentData</code> as private variables because I only want
+                the Blockchain class to interact with them. <br><br>
+
+                Diving into <code>Blockchain.cpp</code> now, we can utilize our constructor to construct the genesis block. This is quite easy to do - all that we need is for
+                the constructor to call <code>constructGenesis()</code>, which can be defined the following way:
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        #include "BlockChain.h"
+
+                        BlockChain::BlockChain(){
+                            constructGenesis();
+                        }
+                        
+                        void BlockChain::constructGenesis(){
+                            constructBlock(0, "0");
+                        }
+                    </code>
+                </pre>
+                <p class="center-text"><i>Here we are passing in an index of 0 and a proof number of 0 for the genesis block.</i></p>
+            </div>
+            <p class="story-time">
+                Of course, <code>constructGenesis()</code> is calling our BlockChain's <code>constructBlock()</code>. Defining <code>constructBlock()</code>
+                is pretty simple of course: We want to construct a new <code>Block</code> object, give that <code>Block</code> some information, verify if it's
+                a valid block, and then add that block to the chain. If the block does get added to the chain, we also want to clear any data the Blockchain is
+                holding after we pass it into the block. <br><br>
+
+                Here's how we would implement that:
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        Block BlockChain::constructBlock(const int& proofNum, const std::string& prevHash){
+    
+                            Block block(chain.size(), proofNum, prevHash, currentData);
+                        
+                            currentData.clear(); // Clears transaction data for new blocks.
+                        
+                            if (block.checkIndex() == 0){ // This isn't secure. When I revist this I will work out a fix and update this section accordingly.
+                                chain.push_back(block);
+                                return block;
+                            }
+                            if (block.checkIndex() != 0){
+                                if (checkValidity(block)){
+                                    chain.push_back(block);
+                                    return block;
+                                } else {
+                                    std::cout << "Block Rejected: invalid block!" << std::endl;
+                                    return block;
+                                }
+                            }
+                        }
+                        
+                        bool BlockChain::checkValidity(Block& newBlock){
+                            if (newBlock.checkIndex() < lastBlock().checkIndex()){
+                                return false;
+                            } else if (newBlock.checkHash() != lastBlock().calculateHash()){
+                                return false;
+                            } else if (!(verifyProof(newBlock.getProofNum(), lastBlock().getProofNum()))){
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+                        
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                Now I know what you may be asking: <i>"Hey Darren, what's that <code>verifyProof()</code>" function doing in <code>checkValidity()</code>"?</i>
+                That's part of our Proof of Work that we haven't implemented yet! <br><br>
+
+                Say, what is Proof of Work anyway? How do we implement it?
+            </p>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Proof of Work</span>
+            </h4>
+            <p class="story-time">
+                At it's simplest, Proof of Work is when a "certain amount of computational effort has been expended for some purpose".
+                This computational effort is the "Mining" that people do in order to verify a block. <br><br>
+
+                Think of it as a very hard algebra problem, where <code>x + y = z</code>:
+                <ul class="story-time">
+                    <li><code>x</code> is unknown.</li>
+                    <li><code>y</code> is known (the previous proof number)</li>
+                    <li><code>z</code> is also unknown, but we know is must start with a certain number or amount of characters.</li>
+                </ul>
+            </p>
+            <p class="story-time">
+                "Miners" basically try to guess the value of <code>x</code>, hash it with the value of <code>y</code>, and hope that they somehow
+                get the answer to <code>z</code> before anyone else does. If they do, they can add a unique transaction to the Blockchain data that rewards
+                them with some cryptocurrency. <br><br>
+
+                Those who don't guess the correct values in time won't be rewarded with any cryptocurrency, but they are able to verify the correct guesser's
+                work by checking if those <code>x</code> and <code>y</code> values truly equal z. <br><br>
+
+                The "difficulty" of mining can be changed by changing what <code>z</code> must start with. For example, in the code below I want my <code>z</code>
+                values to begin with four leading zeros: <code>0000xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>.
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        bool BlockChain::verifyProof(const int& lastProof, const int& proofNum){
+                            std::string guess = std::to_string(lastProof) + std::to_string(proofNum);
+                            std::string guessHash = sha256(guess);
+                            std::cout << "# Trying: " << guess << " | Proof: "<< proofNum << std::endl;
+                            if(guessHash.substr(0, 4) == "0000"){ // You can change the difficulty by adding or removing 0's (and updating substr). More 0's means higher difficulty.
+                                std::cout << "# FOUND: " << guessHash << std::endl;
+                                return true;
+                            }
+                            return false;
+                        }                        
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                If <code>verifyProof()</code> returns true, the <code>proofNum</code> would then be added to the new Block in the Blockchain. <br><br>
+
+                Verifiers than can get the new Block's proof number with the previous Block's proof. If they check out, then the block is added to the chain. <br><br>
+
+                And of course, if someone wants to become a miner on the chain, the function for that would look like this:
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        int BlockChain::proofOfWork(const int& lastProof){
+                            int proofNum = 0;
+                            while(verifyProof(proofNum, lastProof) == false){
+                                ++proofNum;
+                            }
+                            return proofNum;
+                        }                   
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <div class="container">
+            <h4 class="center-text spacer-25px unbold">
+                <span>Wrapping Things Together</span>
+            </h4>
+            <p class="story-time">
+                All that's really left in <code>Blockchain.cpp</code> is to define our helper functions, and a way to view the blockchain.
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        Block BlockChain::lastBlock(){
+                            return chain.back(); // This returns a reference of the last Block Object
+                        }
+                        
+                        void BlockChain::viewLastBlock(){
+                            std::cout << lastBlock(); // Sole purpose is to view the last block.
+                        }
+                        
+                        void BlockChain::viewChain(){
+                            for(auto block : chain){
+                                std::cout << block << std::endl;
+                            }
+                        }              
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                And we are done! <code>Blockchain.h</code> and <code>Blockchain.cpp</code> are finally complete. <br><br>
+                Now we can finally build our <code>main.cpp</code> file to test everything out. I personally set it to mine 3 blocks and then
+                display our Blockchain.
+            </p>
+            <div class="container">
+                <pre>
+                    <code class="lang-cpp">
+                        #include "BlockChain.h"
+
+                        int main(){
+                           BlockChain blockchain = BlockChain();
+                           std::cout << "***Mining 3 additional blocks***" << std::endl;
+                           for(int i = 0; i < 3; i++){
+                              Block lastBlock = blockchain.lastBlock();
+                              int lastProof = lastBlock.getProofNum();
+                              int proofNum = blockchain.proofOfWork(lastProof);
+                        
+                              blockchain.newData("Darren", "Not Darren", "1.0");
+                              std::string lastHash = lastBlock.calculateHash();
+                              Block newBlock = blockchain.constructBlock(proofNum, lastHash);
+                           }
+                           std::cout << "***Done mining 3 blocks***" << std::endl;
+                           blockchain.viewChain();
+                        }            
+                    </code>
+                </pre>
+            </div>
+            <p class="story-time">
+                After that, we just simply link all of our header files and compile, and we can see our blockchain and proof of work in action.
+            </p>
+            <div class="center-text">
+                <img src="{{ url_for('static', filename='img/crypto.png')}}" style="width: auto; max-width: 1152px; height: auto; max-height: 864px; position: relative;">
+            </div>
+        </div>
+        <div class="container spacer-25px">
+            <h4 class="center-text unbold">
+                <span>Conlusion</span>
+            </h4>
+            <p class="story-time">
+                That wraps up my little cryptocurrency adventure. I hope you found reading about it fun and easy to follow. <br><br>
+    
+                I decided to name this coin "Silicoin", a pun on the word "Silicon", and eventually distribute it amongst my friends and use it as a medium of
+                exchange for virtual goods. <br><br>
+    
+                For example: In Settler's of Catan, instead of trading 3 sheep for 1 brick, you could trade X amount of Silicoin instead. Or you can use it
+                as a sort of "Poker Chip" amongst your friends. <br><br>
+    
+                To do that though, I'll need to learn TCP networking and revisit how I handle transaction data. Not only that, I'll have to create
+                a function wallet, and learn public-secret key encryption so I can implement digital signatures. Maybe that'll be a future project of mine.
+            </p>
+        </div>
+        <div class="container center-text spacer-25px">
+            <a href="/projects">
+                <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">Go Back to Projects</button>
+            </a>
+            <a href="https://github.com/dbentler/fccCoin_in_CPP">
+               <button type="button" id="linkedin" onclick="" class="btn btn-dark btn-lg">Blockchain Source Code</button>
+            </a>
         </div>
     </div>
     {% endblock %}

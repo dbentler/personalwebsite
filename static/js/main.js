@@ -12,6 +12,19 @@ function revealText(){
     }
 }
 
+function revealTranscript(){
+    var moreText = document.getElementById("transcript");
+    var button = document.getElementById("btn-transcript");
+
+    if (button.innerHTML == "Reveal"){
+        moreText.style.display = "inline";
+        button.innerHTML = "Collapse";
+    } else {
+        moreText.style.display = "none";
+        button.innerHTML = "Reveal";
+    }
+}
+
 function redirectGitHub(){
     if(document.getElementById("github")){
         location.href = "https://github.com/dbentler";

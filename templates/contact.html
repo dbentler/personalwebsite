@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Darren Bentler | Contact Me</title>
+</head>
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div class="container-fluid spacer-60px">
+        <div class="container">
+            <h1 class="center-text unbold">
+                <span>Contact <strong style="color: red;">Me</strong></span>
+            </h1>
+            <div class="container spacer-25px">
+                <image src="{{ url_for('static', filename='img/profile_pic.png') }}" class="center">
+                <p class="center-text">Yeah... I'm reusing the same picute.</p>
+            </div>
+        </div>
+        <div class="container spacer-25px">
+            <h4 class="center-text unbold">
+                Let's be Friends!
+            </h4>
+            <div class="container center-text spacer-25px">
+                <button type="button" id="linkedin" onclick="redirectLinkedIn()" class="btn btn-dark btn-lg">LinkedIn</button>
+                <button type="button" id="instagram" onclick="redirectInstagram()" class="btn btn-dark btn-lg">Instagram</button>
+                <button type="button" id="github" onclick="redirectGitHub()" class="btn btn-dark btn-lg">GitHub</button>
+                <a href="https://open.spotify.com/user/cvl50sibdo5kbqtlzghwlfzqm?si=e0bd79940da94638">
+                    <button type="button" id="" onclick="" class="btn btn-dark btn-lg">Spotify...?</button>
+                </a>
+            </div>
+            <h4 class="center-text unbold spacer-25px">
+                A bit more personal:
+            </h4>
+            <p style="text-align: center; color: #282828; font-size: 20px;">
+                <strong>Primary Email: </strong>ny.dbentler@gmail.com <br>
+                <strong>Secondary Email: </strong>darren.bentler@nyu.edu <br>
+                <strong>Cell Number: </strong>+1 (631) 408-1093 <br>
+            </p>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

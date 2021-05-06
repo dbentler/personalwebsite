@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Darren Bentler | Questions and Answers</title>
+</head>
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div class="container-fluid spacer-60px">
+        <div class="container">
+            <h1 class="center-text spacer-25px unbold">
+                <span>Questions and <strong style="color: red;">Answers</span>
+            </h1>
+        </div>
+        <div class="container spacer-25px">
+            <h5 class="center-text unbold">
+                <span>Q: Do you live in the US, and do you have the right to work in the United States?</span>
+            </h5>
+            <p class="center-text">
+                A: Yes and yes.
+            </p>
+        </div>
+        <div class="container spacer-25px">
+            <h5 class="center-text unbold">
+                <span>Q: Are you willing to relocate within the United States?</span>
+            </h5>
+            <p class="center-text">
+                A: Of course! I don't really have anything tying me down on Long Island, New York.
+            </p>
+        </div>
+        <div class="container spacer-25px">
+            <h5 class="center-text unbold">
+                <span>Q: When is the best time to contact you?</span>
+            </h5>
+            <p class="center-text">
+                A: Between the hours of 9am-9pm, Eastern Standard Time for over the phone. For email, any time. I recommend cc-ing my secondary email as well.
+            </p>
+        </div>
+        <div class="container spacer-25px">
+            <h5 class="center-text unbold">
+                <span>Q: I'm a recruiter from X country: are you willing to relocate internationally?</span>
+            </h5>
+            <p class="center-text">
+                A: Yes, feel free to email about it and we can possibly have a video meeting regarding details.
+            </p>
+        </div>
+        <div class="container spacer-25px">
+            <h5 class="center-text unbold">
+                <span>Q: I'm interested about your project, XX, but the page isn't ready yet. Why is that?</span>
+            </h5>
+            <p class="center-text">
+                A: These pages take time to write up and convert into HTML. The Cryptocurrency Adventure page took me a full day to write!<br><br>
+                That being said, you can send me an email or call me and I'll be more than happy to talk about project XX there! :)
+            </p>
+        </div>
+        <div class="container spacer-25px">
+            <h5 class="center-text unbold">
+                <span>Q: I'm a recruiter who's not hiring for software development now, can I talk to you about other opportunities?</span>
+            </h5>
+            <p class="center-text">
+                A: Of course! Send me an email or call me with the details.
+            </p>
+        </div>
+        <div class="container spacer-25px">
+            <h5 class="center-text unbold">
+                <span>Q: How can I contact you or learn more about you?</span>
+            </h5>
+            <p class="center-text">
+                A: Through any one of these buttons:
+            </p>
+        </div>
+        <div class="container center-text">
+            <a href="/about">
+                <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">About Me (Semi-Casual)</button>
+            </a>
+            <a href="/contact">
+                <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">Contact Me</button>
+            </a>
+            <a href="/qna/personal">
+                <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">QnA (More personal, more casual)</button>
+            </a>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

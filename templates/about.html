@@ -37,41 +37,62 @@
             </h2>
             <div class="container spacer-25px">
                 <p style="font-size: 20px;">
-                I'm sure by this point in time you already know my name, my age, and where I currently live. To avoid repeating myself, I guess we'll just jump into some fun facts. Kind of like the first day of classes 
-                in college where we're doing ice breakers:
+                I'm a hard working and self-driven, 21 year old raised on Long Island in South Huntington, New York. <br><br>
+
+                I recognize the importance of teamwork and efficiency in the work place, but I'm also not afraid to ask for help
+                or for a second opinion. <br><br>
+
+                Professionally, I strive to put forth my best work and self in order to achieve goals and keep team morale high. I thrive 
+                in both team and solo environments, and I love to get to know both who I'm working with, and who I'm working for. <br><br>
+
+                I also believe in forming a "connection" with customers, in order to warm relations and ensure they feel comfortable and confident with
+                myself and whatever team I'm apart of. <br><br>
+
+                If you'd like some casual fun facts about myself outside of work, click the button below:
                 </p>
-                <ul style="font-size: 20px;">
-                    <li>My favorite color is <strong style="color: red;">red</strong>.</li>
-                    <li>I used to be a Barista. My favorite coffee blend is currently Starbuck Reserve's "Whiskey Barrel Aged Cold Brew".</li>
-                    <li>Despite getting into it late, I'm a big fan of the MCU. From the MCU, my favorite character is Tony Stark/Iron Man.</li>
-                    <li>I like rock climbing, but I'm pretty bad at it. I can barely do a V3.</li>
-                </ul>
-                <div class="container center-text">
-                    <img src="{{ url_for('static', filename='img/rockclimbing.jpeg')}}" style="width: auto; max-width: 310px; height: auto; max-height: 545px; position: relative;">
-                    <p style="font-size: 14px;"><i>Wow, look at me go. Little do you know it's actually a V1!</i></p>
+                <div class='container moreTextContainer spacer-25px'>
+                    <h3 class="center-text">Casual Fun Facts</h3>
+                    <!--Transcript will eventually go here-->
+                    <div class="container">
+                        <span id="more" class="spanP">
+                            <ul style="font-size: 20px;">
+                                <li>My favorite color is <strong style="color: red;">red</strong>.</li>
+                                <li>I used to be a Barista. My favorite coffee blend is currently Starbuck Reserve's "Whiskey Barrel Aged Cold Brew".</li>
+                                <li>Despite getting into it late, I'm a big fan of the MCU. From the MCU, my favorite character is Tony Stark/Iron Man.</li>
+                                <li>I like rock climbing, but I'm pretty bad at it. I can barely do a V3.</li>
+                            </ul>
+                            <div class="container center-text">
+                                <img src="{{ url_for('static', filename='img/rockclimbing.jpeg')}}" style="width: auto; max-width: 310px; height: auto; max-height: 545px; position: relative;">
+                                <p style="font-size: 14px;"><i>Wow, look at me go. Little do you know it's actually a V1!</i></p>
+                            </div>
+                            <ul style="font-size: 20px;">
+                                <li>Despite being a Tony Stark/Iron Man fan, my favorite MCU movie is "Guardians of the Galaxy".</li>
+                                <li>I wanted to be an astronomer when I was little since space fascinated me so much back then. It still fascinates me today.</li>
+                                <li>I'm plagued with the "finding a new song and listening to it on repeat until you get sick of it" disease, which sucks because I wanted to put my favorite song here.</li>
+                                <li>I have a pet rabbit named Lucy! At the time of writing this, she's currently 3 years old.</li>
+                            </ul>
+                            <div class="container center-text">
+                                <img src="{{ url_for('static', filename='img/lucy.jpeg')}}" style="width: auto; max-width: 512px; height: auto; max-height: 384px; position: relative;">
+                                <p><i>Obligatory picture of Lucy.</i></p>
+                            </div>
+                            <ul style="font-size: 20px;">
+                                <li>When it comes to nerd stuff (well, besides the MCU), I'm a huge fan of the Halo universe.</li>
+                                <li>The first program I ever wrote was basically a backdoor to a Minecraft server.</li>
+                                <li>Friends would review me as: "A more tame Michael Reeves", "Like a stupid Tony Stark", and "I don't want to say anything for you to put up on your stupid website, Darren".</li>
+                                <li>Oxford Comma until the day I die.</li>
+                                <li>On the topic of the Oxford Comma, yes I know I put my puncuation outside of quotation marks. Yes, I know this isn't the American English way. No, I'm not British. I've just
+                                    been doing it like that for so long I'm in to deep.
+                                </li>
+                            </ul>
+                            <p style="font-size: 20px;">
+                            And that's the end of that! Now, let's dive into some actual interesting content here.
+                            </p>
+                        </span>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="btn" onclick="revealText()" class="btn btn-outline-secondary">Reveal</button>
+                    </div>
                 </div>
-                <ul style="font-size: 20px;">
-                    <li>Despite being a Tony Stark/Iron Man fan, my favorite MCU movie is "Guardians of the Galaxy".</li>
-                    <li>I wanted to be an astronomer when I was little since space fascinated me so much back then. It still fascinates me today.</li>
-                    <li>I'm plagued with the "finding a new song and listening to it on repeat until you get sick of it" disease, which sucks because I wanted to put my favorite song here.</li>
-                    <li>I have a pet rabbit named Lucy! At the time of writing this, she's currently 3 years old.</li>
-                </ul>
-                <div class="container center-text">
-                    <img src="{{ url_for('static', filename='img/lucy.jpeg')}}" style="width: auto; max-width: 512px; height: auto; max-height: 384px; position: relative;">
-                    <p><i>Obligatory picture of Lucy.</i></p>
-                </div>
-                <ul style="font-size: 20px;">
-                    <li>When it comes to nerd stuff (well, besides the MCU), I'm a huge fan of the Halo universe.</li>
-                    <li>The first program I ever wrote was basically a backdoor to a Minecraft server.</li>
-                    <li>Friends would review me as: "A more tame Michael Reeves", "Like a stupid Tony Stark", and "I don't want to say anything for you to put up on your stupid website, Darren".</li>
-                    <li>Oxford Comma until the day I die.</li>
-                    <li>On the topic of the Oxford Comma, yes I know I put my puncuation outside of quotation marks. Yes, I know this isn't the American English way. No, I'm not British. I've just
-                        been doing it like that for so long I'm in to deep.
-                    </li>
-                </ul>
-                <p style="font-size: 20px;">
-                And that's the end of that! Now, let's dive into some actual interesting content here.
-                </p>
             </div>
         </div>
         <!--Story Time-->
@@ -171,7 +192,7 @@
             <h3 class="center-text">Transcript</h3>
             <!--Transcript will eventually go here-->
             <div class="container text-center">
-                <span id="more" class="spanP">
+                <span id="transcript" class="spanP">
                     Hi, I'm Captain America - Here to talk to you about one of the most valuable traits a soldier or student can have. <br><br>
                     
                     Patience. <br><br>
@@ -183,7 +204,7 @@
                 </span>
             </div>
             <div class="text-center">
-                <button type="button" id="btn" onclick="revealText()" class="btn btn-outline-warning">Reveal</button>
+                <button type="button" id="btn-transcript" onclick="revealTranscript()" class="btn btn-outline-warning">Reveal</button>
             </div>
         </div>
         <!--Simple About Me-->

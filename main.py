@@ -30,5 +30,17 @@ def mywebsite():
 def crypto():
     return render_template("crypto.html")
 
+@app.route("/qna")
+def qna():
+    return render_template("qna.html")
+
+@app.route("/qna/personal")
+def qnapersonal():
+    return render_template("qnapersonal.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

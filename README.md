@@ -3,4 +3,4 @@ My personal website, now deployed on Google Cloud. This was a very fun project t
 
 TODO:
 Finish readme.MD
-gcloud deployment test
+gcloud deployment test 3 electric boogaloo

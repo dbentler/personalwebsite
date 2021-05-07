@@ -13,8 +13,6 @@ Where `<major>` is reserved for massive front-end changes (ie, site layout) and 
 
 ## Planned Features
 
- - Implement Markdown rendering.
- - Lower the font size across all pages. I have no clue why I made them that large.
  - Add dynamic content (like a small little cryptographic puzzle inspired by the ones created by Cicada-3301).
 
 ## Devblog

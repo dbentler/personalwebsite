@@ -11,7 +11,7 @@ def get_project_root() -> Path:
     return Path(__file__).parent.parent
 
 # UNCOMMENT FOR PRODUCTION
-ROOT = str(get_project_root())
+ROOT = str(get_project_root()) + "srv/"
 # UNCOMMENT FOR LOCAL DEVELOPMENT
 # ROOT = str(get_project_root()) + "\\"
 

@@ -3,7 +3,8 @@ My personal portfolio/devblog site, created with Flask, Bootstrap, and HTML5.
 
 The website is currently hosted on the Google App Engine, which is linked to this repository to automatically update whenever a new push to main is created.
 
-Local development currently takes place on the websiteDev branch. You can preview new features by downloading it and running it locally, but I can't guarantee it'll look pretty.
+# Development
+Development currently takes place on the websiteDev branch. Here, I work on implementing new features or changing layouts. You can preview these changes by cloning and running the site locally.
 
 ## Versioning
 Versioning follows the following format:

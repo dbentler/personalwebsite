@@ -46,7 +46,7 @@ def contact():
 
 @app.route("/test")
 def test():
-    content = renderMarkdown("markdown\\test.md")
+    content = renderMarkdown("markdown/test.md")
     return render_template("test.html", text=content)
 
 if __name__ == "__main__":

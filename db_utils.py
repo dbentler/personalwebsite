@@ -10,7 +10,11 @@ from pathlib import Path
 def get_project_root() -> Path:
     return Path(__file__).parent.parent
 
-ROOT = str(get_project_root()) + "personalwebsite/"
+# UNCOMMENT FOR PRODUCTION
+ROOT = str(get_project_root()) + "srv/"
+# UNCOMMENT FOR LOCAL DEVELOPMENT
+# ROOT = str(get_project_root()) + "\\"
+
 
 def renderMarkdown(file_location):
     """

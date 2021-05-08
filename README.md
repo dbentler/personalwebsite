@@ -3,7 +3,7 @@ My personal portfolio/devblog site, created with Flask, Bootstrap, and HTML5.
 
 The website is currently hosted on the Google App Engine, which is linked to this repository to automatically update whenever a new push to main is created.
 
-Local development currently takes place on my PC, with changes being pushed when features are complete. These are currently whenever a new HTML5 page is ready, or whenever a major backend change happens.
+Local development currently takes place on the websiteDev branch. You can preview new features by downloading it and running it locally, but I can't gurantee it'll look pretty.
 
 ## Versioning
 Versioning follows the following format:

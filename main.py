@@ -1,8 +1,12 @@
+from db_utils import *
+
 from flask import Flask, render_template
+from flask_misaka import Misaka
 from flask_bootstrap import Bootstrap
 
 
 app = Flask(__name__)
+Misaka(app)
 
 
 @app.route("/") # Listens for <website>/<subpage>
@@ -41,6 +45,11 @@ def qnapersonal():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+@app.route("/test")
+def test():
+    content = renderMarkdown("markdown\\test.md")
+    return render_template("test.html", text=content)
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8080, debug=True)

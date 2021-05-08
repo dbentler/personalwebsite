@@ -147,3 +147,10 @@ h2 {
     height: auto;
     max-height: 100%;
 }
+
+.markdown img + em {
+    display: inherit;
+    text-align: center;
+    font-weight: normal;
+    font-size: 75%;
+}

@@ -2,8 +2,6 @@ from db_utils import *
 
 from flask import Flask, render_template
 from flask_misaka import Misaka
-from flask_bootstrap import Bootstrap
-
 
 app = Flask(__name__)
 Misaka(app, fenced_code=True)

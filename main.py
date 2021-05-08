@@ -6,7 +6,7 @@ from flask_bootstrap import Bootstrap
 
 
 app = Flask(__name__)
-Misaka(app)
+Misaka(app, fenced_code=True)
 
 
 @app.route("/") # Listens for <website>/<subpage>

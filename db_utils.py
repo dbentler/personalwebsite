@@ -1,6 +1,8 @@
 # db_utils AKA Darren Bentler Utilities
 """
 The purpose of db_utils is to provide utility functions for the back-end (main.py) for darrenbentler.com, and keep main.py clean.
+
+NOTE TO SELF: Switch \\ to / when staging to dev branch!
 """
 
 from pathlib import Path

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Darren Bentler | Test Page</title>
+</head>
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div class="container-fluid spacer-60px">
+        <div class="container">
+            <h1 class="center-text spacer-25px unbold">
+                <span class="span-underline">Test <strong style="color: red;">Page</span>
+            </h1>
+        </div>
+        <div class="container markdown">
+            {{ text|markdown }}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

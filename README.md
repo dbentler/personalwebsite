@@ -15,7 +15,6 @@ Where `<major>` is reserved for massive front-end changes (ie, site layout) and 
 ## Planned Features
 
  - Add dynamic content (like a small little cryptographic puzzle inspired by the ones created by Cicada-3301).
- - Markup Renderer for Project pages.
  - Devblogs to illustrate what I've been working on.
 
 ## Devblog

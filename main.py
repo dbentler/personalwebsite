@@ -30,7 +30,8 @@ def mywebsite():
 
 @app.route("/projects/crypto")
 def crypto():
-    return render_template("crypto.html")
+    content = renderMarkdown("markdown/crypto.md")
+    return render_template("crypto.html", text=content)
 
 @app.route("/qna")
 def qna():

@@ -20,6 +20,10 @@ def about():
 def projects():
     return render_template("projects.html")
 
+@app.route("/projects/lw-network")
+def lwnetwork():
+    return render_template("lw-network.html")
+
 @app.route("/projects/construction")
 def construction():
     return render_template("construction.html")

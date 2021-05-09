@@ -22,7 +22,8 @@ def projects():
 
 @app.route("/projects/lw-network")
 def lwnetwork():
-    return render_template("lw-network.html")
+    content = renderMarkdown("markdown/lw-network.md")
+    return render_template("lw-network.html", text=content)
 
 @app.route("/projects/construction")
 def construction():

@@ -598,11 +598,11 @@ With that, warps are now done and ready to go.
 
 The ability to add more or restrict player slots is vital when it comes to server security. By default, we had the capacity for 200 players on the server at any time.
 
-Unfortunately, these leaves a lot of room for people with hostile intentions to log on multiple accounts and spam our server chat, with either advertisements for other servers or profanity.
+Unfortunately, theis leaves a lot of room for people with hostile intentions to log on multiple accounts and spam our server chat - with either advertisements for other servers or profanity.
 
-These bots could also all drop a bunch of items at the same time and create unnecessary strain on the server. This is because Minecraft renders dropped items as entities, and as the Minecraft code base cannot handle too many entities on the screen at once.
+These bots could also all drop a bunch of items at the same time and create unnecessary strain on the server. This is because Minecraft renders dropped items as entities, Minecraft itself cannot handle too many entities on the screen at once.
 
-So we want to be able to set the amount of player slots available without having to restart the server in the event of one of the attacks. Luckily, the SpigotAPI allows us to do just this.
+So! We want to be able to set the amount of player slots available without having to restart the server in the event of one of the attacks. Luckily, the SpigotAPI allows us to do just this.
 
 All that's really need is to make sure we catch any errors from the user, and from the server:
 

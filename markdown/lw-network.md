@@ -75,6 +75,19 @@ Utilizing the SpigotAPI, we can grab the player's inidivdual's X and Z coordinat
 And it's pretty easy to do this through code. Don't worry, I'll walk you through that everything does in just a second. But continuing forward, you should reference the [SpigotAPI](https://hub.spigotmc.org/javadocs/bukkit/) to get a better sense of what's exactly happening in the code:
 
 ```java
+  
+package me.ezjamo.commands;
+
+import org.bukkit.Location;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import me.ezjamo.Messages;
+import me.ezjamo.utils.Utils;
+import me.ezjamo.managers.SpawnManager;
+
 public class DistanceCommand extends Utils implements CommandExecutor {
 
 
@@ -144,4 +157,213 @@ Finally, to make sure our command is actually usable. We can add this to `Lonewo
 ```java
 getCommand("distance").setExecutor(new DistanceCommand())
 ```
+
+#### <span class="span-underline">LW-Core: The Essentials</span>
+
+<div class="container center-text spacer-25px">
+    <a href="https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/commands/SpawnCommand.java">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: Spawn</button>
+    </a>
+    <a href="https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/commands/SetWarpCommand.java">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: Set Warps</button>
+    </a>
+    <a href="https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/commands/SetSlotsCommand.java">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: Set Slots</button>
+    </a>
+</div>
+
+After the creation of the distance command, a revelation was had within the team. "*Why download someone else's plugin, which probably has rely on other plugins and increase our restart time, when we can just write our own version with exactly what we need?*"
+
+And so, LW-Core came into existence. The first thing we needed to do was create essential commands such as: a way for players to return to spawn, a warp command for players to go a point of interest, and a way to set the amount of player slots available on the server without restarting.
+
+In the next few sections, we'll go more in depth with these commands and how we implement them.
+
+##### <span class="span-underline">LW-Core: Spawn</span>
+
+<div class="container center-text spacer-25px">
+    <a href="https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/commands/SetSpawnCommand.java">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: SetSpawn</button>
+    </a>
+    <a href="https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/commands/SpawnCommand.java">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: Spawn</button>
+    </a>
+</div>
+
+A command like /spawn is an **essential** feature for any Minecraft server, especially a factions one. Spawn is where players can meet safely and trade items, work on their tools, or access the item shop using in-game currency. Outside of spawn is also an open
+player vs player zone, with custom built monuments and terrain. If you're on a factions server and you're not in your base, chances are you're at spawn.
+
+For a /setspawn plugin to work, we need it to be able to grab a player's location in the world along the X, Y, and Z axis. Not only that, we also need to save where the player is looking. Once we collect that data, we'll need to save it to a configuration file **and** inform the server that the world's spawn has been moved to position (X, Y, Z). This way, in the event someone dies, they won't be teleported to an unknown location.
+
+The code for that would look like this:
+
+```java
+package me.ezjamo.commands;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import me.ezjamo.Messages;
+import me.ezjamo.utils.Utils;
+import me.ezjamo.managers.SpawnManager;
+
+public class SetSpawnCommand extends Utils implements CommandExecutor {
+
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		if (!(sender instanceof Player)) {
+			message(sender, "&cThis command can only be used by players!");
+			return true;
+		}
+		Player player = (Player) sender;
+		SpawnManager spawnCoords = SpawnManager.getManager();
+		if (cmd.getName().equalsIgnoreCase("setspawn")) {
+			if (player.hasPermission("lw.setspawn")) {
+				spawnCoords.getConfig().set("spawn.world", player.getLocation().getWorld().getName());
+				spawnCoords.getConfig().set("spawn.x", player.getLocation().getX());
+				spawnCoords.getConfig().set("spawn.y", player.getLocation().getY());
+				spawnCoords.getConfig().set("spawn.z", player.getLocation().getZ());
+				spawnCoords.getConfig().set("spawn.yaw", player.getLocation().getYaw());
+				spawnCoords.getConfig().set("spawn.pitch", player.getLocation().getPitch());
+				spawnCoords.saveConfig();
+				message(player, Messages.prefix + "&fSpawn set.");
+			}
+			if (!player.hasPermission("lw.setspawn")) {
+				message(player, Messages.prefix + Messages.noPermission);
+			}
+		}
+		return true;
+	}
+}
+```
+
+Now let's look at the main meat of the code to understand what's going on:
+
+```java
+SpawnManager spawnCoords = SpawnManager.getManager();
+        if (cmd.getName().equalsIgnoreCase("setspawn")) {
+            if (player.hasPermission("lw.setspawn")) {
+                spawnCoords.getConfig().set("spawn.world", player.getLocation().getWorld().getName());
+                spawnCoords.getConfig().set("spawn.x", player.getLocation().getX());
+                spawnCoords.getConfig().set("spawn.y", player.getLocation().getY());
+                spawnCoords.getConfig().set("spawn.z", player.getLocation().getZ());
+                spawnCoords.getConfig().set("spawn.yaw", player.getLocation().getYaw());
+                spawnCoords.getConfig().set("spawn.pitch", player.getLocation().getPitch());
+                spawnCoords.saveConfig();
+                message(player, Messages.prefix + "&fSpawn set.");
+            }
+        }
+```
+
+The first thing we're checking for is `player.hasPermission("lw.setspawn")`. With LuckPerms installed and hooked, we're able to define custom permissions to make sure these commands can only be accessed by certain groups.
+
+The next thing we're doing is setting the spawn location of the specific world we're in. Minecraft has three worlds by default: The Overworld, The Nether, and The End. `.getWorld().getName()` ensures we're setting the spawn only in the world we're currently in.
+
+After that, we're grabbing the player who ran the commands `Player`'s (X, Y, Z) position, as well as their pitch and yaw.
+
+Finally, we just simply save this information to a configuration file and reply with a confirmation message.
+
+
+And of course, in the event a player who doesn't has the permission `lw.setspawn` tried to change the spawn location...
+
+```java
+if (!player.hasPermission("lw.setspawn")) {
+				message(player, Messages.prefix + Messages.noPermission);
+			}
+```
+
+...we return a preset message: "Invalid command! Type /help" that's configured in `Messages`.
+
+Alright! That's great! But how do players get back to spawn on their own? What if they're stuck in a block, and need an admin or staff member to teleport them back to spawn? This is where things get a bit complex...
+
+The first thing we'll need to do is get the world the player is in. Once we figure that out, we can pull information about the spawn's location from our configuration files:
+
+```java
+World w = Bukkit.getServer().getWorld(spawnCoords.getConfig().getString("spawn.world"));
+double x = spawnCoords.getConfig().getDouble("spawn.x");
+double y = spawnCoords.getConfig().getDouble("spawn.y");
+double z = spawnCoords.getConfig().getDouble("spawn.z");
+float yaw = (float)spawnCoords.getConfig().getDouble("spawn.yaw");
+float pitch = (float)spawnCoords.getConfig().getDouble("spawn.pitch");
+Location spawn = new Location(w, x, y, z, yaw, pitch);
+```
+
+Then we'll need to get the centered location of the spawn block. See, Minecraft's (X, Y, Z) coordinates are actually stored as `doubles`. We want to make sure we center the player on the spawn block instead of a little to the left or a little to the right. We handle this in the [SpawnManager](https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/managers/SpawnManager.java), as well as some other things. The code for centering the spawn location inside of the manager looks a little something like this:
+
+```java
+public static Location getCenteredLocation(Location loc) {
+        World world = loc.getWorld();
+        int x = loc.getBlockX();
+        int y = (int) Math.round(loc.getY());
+        int z = loc.getBlockZ();
+        return new Location(world, x + 0.5, y, z + 0.5, loc.getYaw(), loc.getPitch());
+    }
+```
+
+Once we receive that location, we can then check whether or not the player we're attempting to teleport is online. If so, we teleport them and send two confirmation messages: one to the command sender and one to the person who was teleported. If not, we return an error message that the player doesn't exist on the server.
+
+```java
+if (Lonewolves.plugin.getConfig().getBoolean("teleport-to-center")) {
+            spawn = SpawnManager.getCenteredLocation(spawn);
+            }
+            Player target = Bukkit.getPlayer(args[0]);
+            if (target == null) {
+                message(sender, Messages.prefix + "&cPlayer not found.");
+                return true;
+            }
+            if (ess != null) {
+                User user = ess.getUser(target);
+                user.setLastLocation();
+            }
+            target.teleport(spawn);
+            message(sender, Messages.prefix + "&fTeleportation successful!");
+            message(target, Messages.prefix + "&fTeleportation successful!");
+            return true;
+```
+
+We also have another `if` set up for when it's only a player trying to teleport themselves to spawn, with similar functionality:
+
+```java
+ Player player = (Player) sender;
+        if (cmd.getName().equalsIgnoreCase("spawn")) {
+        	if (spawnCoords.getConfig().getConfigurationSection("spawn") == null) {
+        		message(player, Messages.prefix + "&cSpawn not set. Use &f/setspawn &cto set a spawnpoint.");
+        		return true;
+        	}
+        	World w = Bukkit.getServer().getWorld(spawnCoords.getConfig().getString("spawn.world"));
+            double x = spawnCoords.getConfig().getDouble("spawn.x");
+            double y = spawnCoords.getConfig().getDouble("spawn.y");
+            double z = spawnCoords.getConfig().getDouble("spawn.z");
+            float yaw = (float)spawnCoords.getConfig().getDouble("spawn.yaw");
+            float pitch = (float)spawnCoords.getConfig().getDouble("spawn.pitch");
+            Location spawn = new Location(w, x, y, z, yaw, pitch);
+            if (Lonewolves.plugin.getConfig().getBoolean("teleport-to-center")) {
+                spawn = SpawnManager.getCenteredLocation(spawn);
+            }
+            if (player.hasPermission("lw.spawn")) {
+                if (args.length < 1) {
+                	if (player.hasPermission("lw.bypass.teleportdelay")) {
+                		if (ess != null) {
+                            User user = ess.getUser(player);
+                            user.setLastLocation();
+                        }
+                    	player.teleport(spawn);
+                    	message(player, Messages.prefix + "&fTeleportation successful!");
+                        return true;
+                    }
+```
+
+When you look at the Source Code, you'll see some additional code I omitted in this section. That's because they're there for gameplay specific scenarios. We may dive into them at a later section.
+
+##### <span class="span-underline">LW-Core: Warps</span>
+
+<div class="container center-text spacer-25px">
+    <a href="https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/commands/SetWarpCommand.java">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: SetWarp</button>
+    </a>
+    <a href="https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/commands/WarpCommand.java">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: Warp</button>
+    </a>
+</div>
 

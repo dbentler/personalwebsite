@@ -21,17 +21,17 @@ Now I'm going to be using a lot of terms you, the reader, may not be all too fam
 
 Technical terms include:
 
-- [Minecraft](https://en.wikipedia.org/wiki/Minecraft): A Java, voxel-based sandbox game developed by [Mojang Studios](https://en.wikipedia.org/wiki/Mojang_Studios).
-- [SpigotMC](https://www.spigotmc.org/wiki/about-spigot/): A modified server.jar based on [CraftBukkit](https://dev.bukkit.org/) with performance improvements and additional features. We ran the build compatible with Minecraft 1.8.9.
-- [SpigotAPI](https://hub.spigotmc.org/javadocs/bukkit/): Spigot's API, built off of the CraftBukkit API (Think C++ and C). It provides an interface for the server to interact with players and the in-game world, and vice versa. We used v1.8.9 of the API.
-- Plugin: A Java program built off of either the Spigot or CraftBukkit API that provides a Minecraft server with custom command features that can be used by either the player or server directly.
-- [BungeeCord](https://www.spigotmc.org/wiki/about-bungeecord/): Proxy bridge between a player's client (their local instance of Minecraft) and a server. Allows the seamless connection to multiple servers at once.
-- [OVH Cloud](https://www.ovh.com/world/): A French cloud computing company that VPS, dedicates servers, and other web services.
-- Factions: A gametype where players form "teams" and battle against one another in order to become the dominant power. Teams or players can raid other teams or players in order to steal the latters belongings.
-- [SavageFactions](https://github.com/lonewolvespvp/SavageFactions): A fork of a fork (wow!) of the original Minecraft [Factions](https://www.spigotmc.org/resources/factions.1900/) plugin. What is linked is the LW team's fork of SavageFactions.
-- [Putty](https://www.putty.org/): An SSH and telnet client developed by Simon Tatham for Windows. We used this to interact with our OVH servers.
-- [BuyCraft/Tebex](https://www.spigotmc.org/resources/buycraft.336/): Created as a solution for server monetization, now under the name of [Tebex](https://www.tebex.io/). Will be referred by the original name of "BuyCraft".
-- [LuckPerms](https://www.spigotmc.org/resources/luckperms.28140/): A Spigot plugin that allows what features a player can use by assigning them to groups.
-- [Vault](https://github.com/milkbowl/Vault): A plugin that provides a permissions, chat, and economy API for plugins to hook into, removing the need of dependencies.
+- **[Minecraft](https://en.wikipedia.org/wiki/Minecraft)**: A Java, voxel-based sandbox game developed by [Mojang Studios](https://en.wikipedia.org/wiki/Mojang_Studios).
+- **[SpigotMC](https://www.spigotmc.org/wiki/about-spigot/)**: A modified server.jar based on [CraftBukkit](https://dev.bukkit.org/) with performance improvements and additional features. We ran the build compatible with Minecraft 1.8.9.
+- **[SpigotAPI](https://hub.spigotmc.org/javadocs/bukkit/)**: Spigot's API, built off of the CraftBukkit API (Think C++ and C). It provides an interface for the server to interact with players and the in-game world, and vice versa. We used v1.8.9 of the API.
+- **Plugin**: A Java program built off of either the Spigot or CraftBukkit API that provides a Minecraft server with custom command features that can be used by either the player or server directly.
+- **[BungeeCord](https://www.spigotmc.org/wiki/about-bungeecord/)**: Proxy bridge between a player's client (their local instance of Minecraft) and a server. Allows the seamless connection to multiple servers at once.
+- **[OVH Cloud](https://www.ovh.com/world/)**: A French cloud computing company that VPS, dedicates servers, and other web services.
+- **Factions**: A gametype where players form "teams" and battle against one another in order to become the dominant power. Teams or players can raid other teams or players in order to steal the latters belongings.
+- **[SavageFactions](https://github.com/lonewolvespvp/SavageFactions)**: A fork of a fork (wow!) of the original Minecraft [Factions](https://www.spigotmc.org/resources/factions.1900/) plugin. What is linked is the LW team's fork of SavageFactions.
+- **[Putty](https://www.putty.org/)**: An SSH and telnet client developed by Simon Tatham for Windows. We used this to interact with our OVH servers.
+- **[BuyCraft/Tebex](https://www.spigotmc.org/resources/buycraft.336/)**: Created as a solution for server monetization, now under the name of [Tebex](https://www.tebex.io/). Will be referred by the original name of "BuyCraft".
+- **[LuckPerms](https://www.spigotmc.org/resources/luckperms.28140/)**: A Spigot plugin that allows what features a player can use by assigning them to groups.
+- **[Vault](https://github.com/milkbowl/Vault)**: A plugin that provides a permissions, chat, and economy API for plugins to hook into, removing the need of dependencies.
 
 

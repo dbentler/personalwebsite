@@ -230,7 +230,7 @@ Now that we have our `Block.cpp` and `Block.h` done, we can finally start work o
 
 Here we want every new Block's previous hash to point to block that came before it. We also out block index to represent it's place within our chain:
 
-![Blockchain Diagram](http://spheregen.com/wp-content/uploads/2019/04/blockchain.png)
+<img src="http://spheregen.com/wp-content/uploads/2019/04/blockchain.png" alt="Blockchain" class="center">
 *A diagram of a Blockchain.*
 
 We'll also need our blockchain to be secure, so we'll need it to do the following:

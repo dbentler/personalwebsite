@@ -586,6 +586,88 @@ public class WarpCommand extends Utils implements CommandExecutor, TabCompleter 
 		}
 ```
 
-With that, warps are now down and ready to go.
+With that, warps are now done and ready to go.
 
+##### <span class="span-underline">LW-Core: Player Slots</span>
+
+<div class="container center-text spacer-25px">
+    <a href="https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/commands/SetSlotsCommand.java">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: Set Slots</button>
+    </a>
+</div>
+
+The ability to add more or restrict player slots is vital when it comes to server security. By default, we had the capacity for 200 players on the server at any time.
+
+Unfortunately, these leaves a lot of room for people with hostile intentions to log on multiple accounts and spam our server chat, with either advertisements for other servers or profanity.
+
+These bots could also all drop a bunch of items at the same time and create unnecessary strain on the server. This is because Minecraft renders dropped items as entities, and as the Minecraft code base cannot handle too many entities on the screen at once.
+
+So we want to be able to set the amount of player slots available without having to restart the server in the event of one of the attacks. Luckily, the SpigotAPI allows us to do just this.
+
+All that's really need is to make sure we catch any errors from the user, and from the server:
+
+```java
+package me.ezjamo.commands;
+
+import java.lang.reflect.Field;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+
+import me.ezjamo.Messages;
+
+public class SetSlotsCommand implements CommandExecutor
+{
+	
+    public boolean onCommand(CommandSender sender,Command command,String alias,String[] args) {
+        if (!sender.hasPermission("lw.slots")) {
+            sender.sendMessage(Messages.prefix + Messages.noPermission);
+            return true;
+        }
+        if (args.length == 0) {
+            sender.sendMessage(ChatColor.RED + "Invalid arguments.");
+            return true;
+        }
+        try {
+            this.changeSlots(Integer.parseInt(args[0]));
+            sender.sendMessage(ChatColor.GREEN + "Slots updated.");
+        }
+        catch (NumberFormatException numbererr) {
+            sender.sendMessage(ChatColor.RED + "You must provide a valid number.");
+        }
+        catch (ReflectiveOperationException errorerr) {
+            sender.sendMessage(ChatColor.RED + "An unknown error has occurred");
+        }
+        return true;
+    }
+```
+
+If everything checks out, we then can utilize SpigotAPI calls to change these player slots:
+
+```java
+public void changeSlots(int slots) throws ReflectiveOperationException {
+       Object playerList = Bukkit.getServer().getClass().getDeclaredMethod("getHandle", (Class<?>[])new Class[0]).invoke(Bukkit.getServer(), new Object[0]);
+       Field maxPlayersField = playerList.getClass().getSuperclass().getDeclaredField("maxPlayers");
+        maxPlayersField.setAccessible(true);
+        maxPlayersField.set(playerList, slots);
+    }
+}
+```
+
+Just like that, we're done! A very simple way to make sure damage done from bot attacks won't as catastrophic.
+
+We also developed other ways to secure the server from Bot attacks, but we'll get to those later. For now, let's take a break from the code and talk about how the server is set up.
+
+<div class="container center-text spacer-25px">
+    <a href="/projects">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">Go Back to Projects</button>
+    </a>
+    <a href="https://github.com/dbentler">
+        <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW Software Suite (Github)</button>
+    </a>
+    <button type="button" id="linkedin" onclick="" class="btn btn-dark btn-lg" disabled>Continue Reading (Coming Soon!)</button>
+</div>
 

@@ -7,7 +7,7 @@ at least 100 players on the servers at any given time. At the end of our run, we
 
 This article won't be going into much detail about the actual business. Instead, we'll be focusing on the software developed for it: LW-Core, LW-Hub, and Punish-GUI. These plugins were written by myself and others in order to improve our service and optimize server efficiency. In the cases of Punish-GUI and parts of LW-Core, they were designed to give a front-end interface to our back-end that our volunteer staff and administrators could utilize to make sure their daily tasks were completed.
 
-If you are interested in learning more about the LW-Network besides the software aspect of it, you can either [contact me](https://www.darrenbentler.com/contact), or watch this short video I made with Brock Radford where we discuss our time running the network together (it's more of a podcast than a video).
+If you are interested in learning more about the LW-Network besides the software aspect of it, you can [contact me](https://www.darrenbentler.com/contact).
 
 #### <span class="span-underline">Definitions</span>
 
@@ -366,4 +366,226 @@ When you look at the Source Code, you'll see some additional code I omitted in t
         <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Core: Warp</button>
     </a>
 </div>
+
+It's time for warps! Warps are usually used to indicate a place of interest to players. You can set warps at the shop, at a public anvil, or at a cool building you made.
+
+The first thing we'll need to do is configure a [WarpManager](https://github.com/dbentler/LW-Core/blob/master/src/me/ezjamo/managers/WarpManager.java) to handle our warps. This has similar functionality to the `SpawnManager` I briefly mentioned in the section above this one. Since I didn't really dive into the `SpawnManager`'s code, I'll just paste the `WarpManager`'s code here.
+
+```java
+package me.ezjamo.managers;
+
+import me.ezjamo.Lonewolves;
+import me.ezjamo.Messages;
+import me.ezjamo.utils.Utils;
+import me.ezjamo.commands.WarpCommand;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.scheduler.BukkitTask;
+
+import java.io.File;
+import java.io.IOException;
+
+public class WarpManager extends Utils implements Listener {
+	public Lonewolves plugin;
+	public File file;
+	public static FileConfiguration config;
+	public static WarpManager manager;
+	
+	static {
+		WarpManager.manager = new WarpManager();
+	}
+	
+	public WarpManager() {
+		plugin = Lonewolves.getPlugin(Lonewolves.class);
+	}
+	
+	public static WarpManager getManager() {
+		return WarpManager.manager;
+	}
+
+	public static FileConfiguration getWarps() {
+		return WarpManager.config;
+	}
+	
+	public void load() {
+		file = new File(plugin.getDataFolder(), "warps.yml");
+		if (!file.exists()) {
+			plugin.getLogger().info("Creating default: " + file);
+			file.getParentFile().mkdirs();
+			try {
+				file.createNewFile();
+				plugin.getServer().getConsoleSender().sendMessage(color("&aSuccessfully created: " + file));
+			} catch (Exception e) {
+				plugin.getServer().getConsoleSender().sendMessage(color("&cCould not create: " + file));
+			}
+		}
+		config = new YamlConfiguration();
+		try {
+			config.load(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public FileConfiguration get() {
+		return config;
+	}
+	
+	public void reload() {
+		config = YamlConfiguration.loadConfiguration(file);
+	}
+	
+	public void save() {
+		try {
+			config.save(file);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public static Location getCenteredLocation(Location loc) {
+		World world = loc.getWorld();
+		int x = loc.getBlockX();
+		int y = (int) Math.round(loc.getY());
+		int z = loc.getBlockZ();
+		return new Location(world, x + 0.5, y, z + 0.5, loc.getYaw(), loc.getPitch());
+	}
+	
+	@EventHandler
+    public void onPlayerMove(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+        if (event.getFrom().getBlockX() != event.getTo().getBlockX() || event.getFrom().getBlockZ() != event.getTo().getBlockZ() || event.getFrom().getBlockY() != event.getTo().getBlockY()) {
+            BukkitTask task = WarpCommand.tasks.get(player);
+            if (task != null) {
+                message(player, Messages.prefix + "&cTeleportation cancelled!");
+                task.cancel();
+                WarpCommand.tasks.remove(player);
+            }
+        }
+    }
+}
+```
+
+You can ignore the `@EventHandler` for now. It's used for a gameplay specific element that we'll dive into later.
+
+As you can see, all the manager does is create some configuration files to save our warp data to, access it when necessary, and solve the `getCenteredLocation` problem from earler.
+
+Now onto `SetWarps.java`:
+
+```java
+package me.ezjamo.commands;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import me.ezjamo.Messages;
+import me.ezjamo.utils.Utils;
+import me.ezjamo.managers.WarpManager;
+
+public class SetWarpCommand extends Utils implements CommandExecutor {
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        Player player = (Player) sender;
+        WarpManager warps = WarpManager.getManager();
+        if (cmd.getName().equalsIgnoreCase("setwarp")) {
+            if (!player.hasPermission("lw.setwarp")) {
+            	message(player, Messages.prefix + "&cYou do not have permission to do this.");
+                return true;
+            }
+            if (args.length == 0) {
+                message(player, "&cUsage: &7/setwarp <name>");
+                return true;
+            }
+            if (args.length == 1) {
+                warps.get().set("Warps." + args[0].toLowerCase() + ".world", player.getLocation().getWorld().getName());
+                warps.get().set("Warps." + args[0].toLowerCase() + ".x", player.getLocation().getX());
+                warps.get().set("Warps." + args[0].toLowerCase() + ".y", player.getLocation().getY());
+                warps.get().set("Warps." + args[0].toLowerCase() + ".z", player.getLocation().getZ());
+                warps.get().set("Warps." + args[0].toLowerCase() + ".yaw", player.getLocation().getYaw());
+                warps.get().set("Warps." + args[0].toLowerCase() + ".pitch", player.getLocation().getPitch());
+                warps.save();
+                message(player, Messages.prefix + "&aWarp &f" + args[0].toLowerCase() + " &aset.");
+            }
+        }
+        return true;
+    }
+}
+```
+
+Very similar functionality to our Spawn implementations. The warps grabs the player who is setting the warp's (X, Y, Z) positions, along with their Pitch and Yaw. 
+
+Then we save that information into the warps configuration file. It also creates a permission and warp name with the following syntax: `lw.warp.<name>`.
+
+Now, how can players get to these warp locations? Well, it's very similar to how we did it in the `Spawn` implementation! We just need to read the data we saved, pass that information to `bukkit.teleport`, and send back a confirmation message.
+
+We also check for valid permissions as well. Here's how the implementation is done for a staff member warping another player. You'll see a lot of familiarity to `Spawn`:
+
+```java
+public class WarpCommand extends Utils implements CommandExecutor, TabCompleter {
+	public static Map<Player, BukkitTask> tasks = new HashMap<>();
+	private Essentials ess = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");
+
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		WarpManager warps = WarpManager.getManager();
+		if (!(sender instanceof Player)) {
+			if (args.length == 0) {
+				if (warps.get().getConfigurationSection("Warps") == null || warps.get().getConfigurationSection("Warps").getKeys(false).isEmpty()) {
+					message(sender, Messages.prefix + "&cThere are no warps available.");
+					return true;
+				}
+				Set<String> warpList = warps.get().getConfigurationSection("Warps").getKeys(false);
+				message(sender, "&cWarps: &f" + warpList.toString().replace("[", "").replace("]", ""));
+				return true;
+			}
+			if (args.length == 1) {
+				message(sender, "&cYou must specify a player to teleport!");
+				return true;
+			}
+			if (args.length == 2) {
+				if (warps.get().getConfigurationSection("Warps." + args[0].toLowerCase()) == null) {
+					message(sender, "&fWarp &c" + args[0].toLowerCase() + " &fdoes not exist.");
+					return true;
+				}
+				World w = Bukkit.getWorld(warps.get().getString("Warps." + args[0].toLowerCase() + ".world"));
+				double x = warps.get().getDouble("Warps." + args[0].toLowerCase() + ".x");
+				double y = warps.get().getDouble("Warps." + args[0].toLowerCase() + ".y");
+				double z = warps.get().getDouble("Warps." + args[0].toLowerCase() + ".z");
+				float yaw = (float)warps.get().getDouble("Warps." + args[0].toLowerCase() + ".yaw");
+				float pitch = (float)warps.get().getDouble("Warps." + args[0].toLowerCase() + ".pitch");
+				Location warpLoc = new Location(w, x, y, z, yaw, pitch);
+				if (Lonewolves.plugin.getConfig().getBoolean("teleport-to-center")) {
+					warpLoc = WarpManager.getCenteredLocation(warpLoc);
+				}
+				Player target = Bukkit.getPlayer(args[1]);
+				if (target == null) {
+					message(sender, "&cPlayer not found.");
+					return true;
+				}
+				if (ess != null) {
+					User user2 = ess.getUser(target);
+					user2.setLastLocation();
+				}
+				target.teleport(warpLoc);
+				message(sender, Messages.prefix + "&fWarped &c" + target.getName() + " &fto &c" + args[0]);
+				message(target, Messages.prefix + "&fWarped to &c" + args[0]);
+			}
+			else {
+				message(sender, "&cUsage: &7/warp <warp> <player>");
+			}
+			return true;
+		}
+```
+
+With that, warps are now down and ready to go.
+
 

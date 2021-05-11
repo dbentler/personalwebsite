@@ -33,6 +33,11 @@ def construction():
 def mywebsite():
     return render_template("mywebsite.html")
 
+@app.route("/projects/nyc-gtfs-render")
+def nycGTFS():
+    content = renderMarkdown("markdown/nyc-gtfs.md")
+    return render_template("nyc-gtfs-render.html", text=content)
+
 @app.route("/projects/crypto")
 def crypto():
     content = renderMarkdown("markdown/crypto.md")

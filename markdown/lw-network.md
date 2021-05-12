@@ -3,7 +3,7 @@
 The LW-Network was a series of game servers started up by my friends: Brennen Kosmeh, Brock Radford, Justin Sigai; and I.
 
 We hosted these servers from June 2019 to December 2019, and provided services to a community of hundreds of players during our peak. Our servers had to be running 24 hours a day, 7 days a week, as at any given time we had
-at least 100 players on the servers at any given time. At the end of our run, we had generated USD ~$21,000 dollars in revenue through the sale of in-game cosmetics and items.
+at least 100 players on the servers at any given time. At the end of our run, we had generated USD ~$21,000 in revenue through the sale of in-game cosmetics and items.
 
 This article won't be going into much detail about the actual business. Instead, we'll be focusing on the software developed for it: LW-Core, LW-Hub, and Punish-GUI. These plugins were written by myself and others in order to improve our service and optimize server efficiency. In the cases of Punish-GUI and parts of LW-Core, they were designed to give a front-end interface to our back-end that our volunteer staff and administrators could utilize to make sure their daily tasks were completed.
 

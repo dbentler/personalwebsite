@@ -44,6 +44,11 @@ The next two positions, `shape_pt_lat` and `shape_pt_lon` refer to the stations 
 The solution I came out with was by creating a class object "Station":
 
 ```python
+"""
+Darren Bentler 2021 - Using the MTA's GTFS data available online, I plot and draw the NYC subway.
+"""
+import matplotlib.pyplot as plt
+
 class Station:
     def __init__(self, stat_id, stat_lat, stat_long):
         self.stat_id = stat_id
@@ -77,6 +82,7 @@ def parse_data(file):
                 f_mat = list(line.split(","))
                 tmp_stat = Station(f_mat[0], f_mat[1], f_mat[2]) # We already know what information we need from each line since GTFS files follows a set standard.
                 stations.append(tmp_stat)
+        f.close()
         return stations
 ```
 
@@ -87,4 +93,67 @@ if __name__ == "__main__":
     stations = parse_data("K:\\!dev\\Python\\nyc_subway2\\NYC-Subway-From-GTFS-Data\\nyc\\shapes.txt") # You'll need to copy your own path to the shapes.txt file here.
 ```
 
+Before we can this information into `matlib.pyplot`, we'll need to get the correct line color for each station. Lucky for us, our `Station`'s `stat_id` variable already tells us that information.
 
+What better way to switch between variable outputs than a `switch` statement!
+
+*Oh right we're using Python...*
+
+We can get the correct line color by passing the `stat_id` into a function, which will check what group a station belongs to and return the correct line color. While this is not the most optimal way of getting the correct color, it still works pretty quickly since the service indicator (ie, 1, 2, 3, A, C, E) is always the first character in `stat_id`. If you're unfamilar with the NYC subway color scheme, you can find a key [here](http://web.mta.info/developers/resources/line_colors.htm).
+
+```python
+def color_stations(station_id):
+    """
+    Returns station color in accordance of the line it belongs to.
+    Station.stat_id --> string
+    """
+    for char in station_id:
+        if char in "123":
+            return "red"
+        if char in "456":
+            return "green"
+        if char in "7":
+            return "magenta"
+        if char in "ACEH":
+            return "blue"
+        if char in "BDFM":
+            return "orange"
+        if char in "G":
+            return "lime"
+        if char in "JZ":
+            return "brown"
+        if char in "NQR":
+            return "yellow"
+        if char in "LSI":
+            return "gray"
+        return "lime"
+```
+
+Now that we have that, we can finish off `if __name__ == "__main__"` with the following code:
+
+```python
+if __name__ == "__main__":
+    stations = parse_data("K:\\!dev\\Python\\nyc_subway2\\NYC-Subway-From-GTFS-Data\\nyc\\shapes.txt") # You'll need to copy your own path to the shapes.txt file here.
+    plt.scatter([ float(obj.stat_long) for obj in stations ], [ float(obj.stat_lat) for obj in stations ], color=[ color_stations(obj.stat_id) for obj in stations ])
+    plt.show()
+```
+
+When we run our code, we get a full map of the network - including the Staten Island Railway!
+
+<div class="center-text">
+    <img src="/static/img/nyc_subway.png" style="width: auto; max-width: 768px; height: auto; max-height: 576px;">
+</div>
+
+#### <span class="span-underline">Conclusion</span>
+
+That's how you make a very simple render of the NYC subway system from MTA GTFS data. The system I built is actually pretty modular. Given any `shapes.txt` file and a properly configured `color_stations()` function, we can render a map of any transit system that publishes its data via GTFS.
+
+We could also go into further into data analysis with the GTFS data, such as generating [heat maps of stops with the most trips](https://dzone.com/articles/gtfs-transit-data-visualization-in-r). But that's a bit out of the scope of this project.
+
+Thank you for reading. You can check out the source code via the button below:
+
+<div class="container center-text spacer-25px">
+    <a href="https://github.com/dbentler/NYC-Subway-From-GTFS-Data">
+        <button type="button" id="linkedin" onclick="" class="btn btn-dark btn-lg">Source Code (Github)</button>
+    </a>
+</div>

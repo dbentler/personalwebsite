@@ -140,9 +140,7 @@ if __name__ == "__main__":
 
 When we run our code, we get a full map of the network - including the Staten Island Railway!
 
-<div class="center-text">
-    <img src="/static/img/nyc_subway.png" style="width: auto; max-width: 768px; height: auto; max-height: 576px;">
-</div>
+![NYC Subway Render](/static/img/nyc_subway.png)
 
 #### <span class="span-underline">Conclusion</span>
 

@@ -16,7 +16,7 @@ GTFS stands for "General Transit Feed Specificaton". Public transport agencies c
 
 You can read more about GTFS [here](https://developers.google.com/transit/gtfs).
 
-You can access the MTA's GTFS data [one their website](http://web.mta.info/developers/developer-data-terms.html#data). I'm working with static data, so I downloaded the "New York City Transit Subway" data on their page.
+You can access the MTA's GTFS data [on their website](http://web.mta.info/developers/developer-data-terms.html#data). I'm working with static data, so I downloaded the "New York City Transit Subway" data on their page.
 
 #### <span class="span-underline">Requirements</span>
 

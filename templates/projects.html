@@ -19,17 +19,38 @@
                 (If the button is gray, I'm still working on the write-up):
             </p>
             <div class="container center-text">
+                <a href="/projects/nyc-gtfs-render">
+                    <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">NYC-GTFS-Render</button>
+                </a>
                 <a href="/projects/crypto">
                     <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">Silicoin</button>
                 </a>
                 <a href="/projects/mywebsite">
                     <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">darrenbentler.com</button>
                 </a>
-                <button type="button" id="back" onclick="" class="btn btn-dark btn-lg" disabled>Petals Around the Rose</button>
                 <a href="/projects/lw-network">
                     <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">LW-Network</button>
                 </a>
             </div>
+        </div>
+        <div class="container spacer-25px">
+            <h4 class="center-text spacer-25px unbold">
+                <span class="span-underline">Rendering the NYC Subway System via GTFS Data</span>
+            </h4>
+            <div class="center-text spacer-25px">
+                <a href="/projects/nyc-gtfs-render">
+                    <img src="{{ url_for('static', filename='img/nyc_subway.png')}}" style="width: auto; max-width: 768px; height: auto; max-height: 576px;">
+                </a>
+                <div class="center-text spacer-25px">
+                    <a href="https://github.com/dbentler/NYC-Subway-From-GTFS-Data">
+                        <button type="button" id="" onclick="" class="btn btn-dark btn-lg">Source Code (Github)</button>
+                    </a>
+                </div>
+            </div>
+            <p class="story-time spacer-25px">
+                A small project I made with Python. It parses through GTFS (General Transit Feed Specification) data in order to render a map of the NYC subway system. <br><br>
+                It's pretty simple to understand, but the output is pretty neat.
+            </p>
         </div>
         <div class="container spacer-25px">
             <h4 class="center-text spacer-25px unbold">
@@ -39,7 +60,12 @@
                 <img src="{{ url_for('static', filename='img/silicon.png')}}" class="center">
             </a>
             <p class="center-text"><i>Sick logo, I know</i></p>
-            <p style="font-size: 19px;;">
+            <div class="center-text spacer-25px">
+                <a href="https://github.com/dbentler/fccCoin_in_CPP">
+                    <button type="button" id="" onclick="" class="btn btn-dark btn-lg">Source Code (Github)</button>
+                </a>
+            </div>
+            <p class="story-time spacer-25px">
                 My cryptocurrency adventure with C++. Through this project, I work on creating a working blockchain, implement proof of work, and I eventually
                 expand my scope to process transactions. My eventual end goal is for the cryptocurrency to be a medium of exchange that could be traded for virtual
                 goods outside of the scope of a game. Think if you were to use Monopoly Play Money in Settlers of Catan for trades.
@@ -53,27 +79,16 @@
                 <img src="{{ url_for('static', filename='img/new_banner_2.png')}}" class="center">
             </a>
             <p class="center-text"><i>I really like this banner.</i></p>
-            <p style="font-size: 19px;;">
+            <div class="center-text spacer-25px">
+                <a href="https://github.com/dbentler/personalwebsite">
+                    <button type="button" id="" onclick="" class="btn btn-dark btn-lg">Source Code (Github)</button>
+                </a>
+            </div>
+            <p class="story-time spacer-25px">
                 Kind of like a devblog for the website. You get to see some early screenshots of the website before I started "website2.0", an overhaul of the front-end.
                 Here I go over what I learned from making this website, along with thoughts of expansion and possibly my plans for dynamic content.
             </p>
         </div>
-        <div class="container spacer-25px">
-            <h4 class="center-text spacer-25px unbold">
-                <span class="span-underline">Petals Around the Rose</span>
-            </h4>
-            <a href="/projects/construction">
-                <img src="{{ url_for('static', filename='img/petal_around_the_rose.png')}}" class="center">
-            </a>
-            <p class="center-text"><i>The answer is 6.</i></p>
-            <p style="font-size: 19px;;">
-                My implementation of the "Petals Around the Rose" game. 
-                To quote wikipedia, "Petals Around the Rose is a mathematically challenging puzzle in which the object is to work out the formula by which a number is derived from the roll of a set of five or six dice".
-                A simple concept, and fun game to mess with your friends with (if you figure it out of course).<br><br>
-                It's not as impressive as some other things on this list, but it holds a special place in my heart as the first semi-complex C++ program I wrote that compiled out of the box.
-            </p>
-        </div>
-
         <div class="container spacer-25px">
             <h4 class="center-text spacer-25px unbold">
                 <span class="span-underline">The LW Network</span>
@@ -84,7 +99,18 @@
                 </a>
             </div>
             <p class="center-text"><i>Snippet of Code from LW-Core</i></p>
-            <p style="font-size: 19px;;">
+            <div class="center-text spacer-25px">
+                <a href="https://github.com/dbentler/LW-Core">
+                    <button type="button" id="" onclick="" class="btn btn-dark btn-lg">Source Code (Github, LW-Core)</button>
+                </a>
+                <a href="https://github.com/dbentler/LW-Hub">
+                    <button type="button" id="" onclick="" class="btn btn-dark btn-lg">Source Code (Github, LW-Hub)</button>
+                </a>
+                <a href="https://github.com/dbentler/PunishGUI">
+                    <button type="button" id="" onclick="" class="btn btn-dark btn-lg">Source Code (Github, PunishGUI)</button>
+                </a>
+            </div>
+            <p class="story-time spacer-25px">
                 I know know what you may be thinking: <i>"A minecraft server on your portfolio"</i>? And... yeah it is. But I didn't put it up
                 for just any old reason. <br><br>
 

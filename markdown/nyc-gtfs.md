@@ -93,7 +93,7 @@ if __name__ == "__main__":
     stations = parse_data("K:\\!dev\\Python\\nyc_subway2\\NYC-Subway-From-GTFS-Data\\nyc\\shapes.txt") # You'll need to copy your own path to the shapes.txt file here.
 ```
 
-Before we can this information into `matlib.pyplot`, we'll need to get the correct line color for each station. Lucky for us, our `Station`'s `stat_id` variable already tells us that information.
+Before we enter this information into `matlib.pyplot`, we'll need to get the correct line color for each station. Lucky for us, our `Station`'s `stat_id` variable already tells us that information.
 
 What better way to switch between variable outputs than a `switch` statement!
 

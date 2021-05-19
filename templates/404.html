@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Darren Bentler | 404</title>
+</head>
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div class="container-fluid spacer-60px">
+        <div class="container">
+            <h2 class="center-text spacer-60px unbold">
+                <span class="span-underline">Error <strong style="color: red;">404</strong> This Page doesn't <strong style="color: red;">Exist</strong></span>
+            </h2>
+            <p style="text-align: center; color: #282828; font-size: 19px;;"> 
+                I'm sorry, but it appears the page you wanted does not exist. <br><br>
+
+                If you feel that this is an error, please contact me through any of the methods below:
+            </p>
+            <p style="text-align: center; color: #282828; font-size: 19px;;">
+                <strong>Primary Email: </strong>ny.dbentler@gmail.com <br>
+                <strong>Secondary Email: </strong>darren.bentler@nyu.edu <br>
+                <strong>Cell Number: </strong>+1 (631) 408-1093 <br>
+            </p>
+
+            <p style="text-align: center; color: #282828; font-size: 19px;;">
+                In the mean time, please enjoy this silly picture of my rabbit:
+            </p>
+
+            <div class="container center-text">
+                <img src="{{ url_for('static', filename='img/silly_lucy.JPG')}}" style="width: auto; max-width: 310px; height: auto; max-height: 545px;">
+                <p><i>Look at her go.</i></p>
+            </div>
+
+            <p style="text-align: center; color: #282828; font-size: 19px;;">
+                You can use the navigation bar to return to where you were, or use this handy little button to go my projects page:
+            </p>
+            <div class="container center-text">
+                <a href="/projects">
+                    <button type="button" id="back" onclick="" class="btn btn-dark btn-lg">Go Back to Projects</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

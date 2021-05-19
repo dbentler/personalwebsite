@@ -11,6 +11,9 @@ Misaka(app, fenced_code=True)
 def home(): # Function that is ran when <link>/<subpage> is true
     return render_template("home.html") # Renders HTML file appropiate for the required subpage.
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 # This process is than repeated .
 @app.route("/about")
 def about():

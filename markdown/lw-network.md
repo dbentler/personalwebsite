@@ -23,7 +23,7 @@ Technical terms include:
 - **[SpigotAPI](https://hub.spigotmc.org/javadocs/bukkit/)**: Spigot's API, built off of the CraftBukkit API (Think C++ and C). It provides an interface for the server to interact with players and the in-game world, and vice versa. We used v1.8.9 of the API.
 - **Plugin**: A Java program built off of either the Spigot or CraftBukkit API that provides a Minecraft server with custom command features that can be used by either the player or server directly.
 - **[BungeeCord](https://www.spigotmc.org/wiki/about-bungeecord/)**: Proxy bridge between a player's client (their local instance of Minecraft) and a server. Allows the seamless connection to multiple servers at once.
-- **[OVH Cloud](https://www.ovh.com/world/)**: A French cloud computing company that VPS, dedicates servers, and other web services.
+- **[OVH Cloud](https://www.ovh.com/world/)**: A French cloud computing company that rents out VPS, dedicated servers, and other web services.
 - **Factions**: A gametype where players form "teams" and battle against one another in order to become the dominant power. Teams or players can raid other teams or players in order to steal the latters belongings.
 - **[SavageFactions](https://github.com/lonewolvespvp/SavageFactions)**: A fork of a fork (wow!) of the original Minecraft [Factions](https://www.spigotmc.org/resources/factions.1900/) plugin. What is linked is the LW team's fork of SavageFactions.
 - **[Putty](https://www.putty.org/)**: An SSH and telnet client developed by Simon Tatham for Windows. We used this to interact with our OVH servers.

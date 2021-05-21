@@ -17,7 +17,8 @@ def page_not_found(e):
 # This process is than repeated .
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    content = renderMarkdown("markdown/about.md")
+    return render_template("about.html", text=content)
 
 @app.route("/projects")
 def projects():

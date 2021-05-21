@@ -17,7 +17,7 @@
         </div>
         <!--About Me Text-->
         <div class="container center-text spacer-25px">
-            <p style="font-size: 19px;;">
+            <p style="font-size: 19px;">
                 Hey there! As you already (hopefully) know, my name is Darren Bentler. I'm a 21 year old ex-barista, and aspiring software engineer from South Huntington, New York. <br><br>
 
                 This "About Me" page is going to be more casual than professional, as it's meant to focus on who I am as a person. <br>
@@ -34,7 +34,7 @@
                 <span class="span-underline">Who <strong style="color: red;">am</strong> I?</span>
             </h2>
             <div class="container spacer-25px">
-                <p style="font-size: 19px;;">
+                <p style="font-size: 19px;">
                 I'm a hard working and self-driven, 21 year old raised on Long Island in South Huntington, New York. <br><br>
 
                 I recognize the importance of teamwork and efficiency in the work place, but I'm also not afraid to ask for help
@@ -43,8 +43,7 @@
                 Professionally, I strive to put forth my best work and self in order to achieve goals and keep team morale high. I thrive 
                 in both team and solo environments, and I love to get to know both who I'm working with, and who I'm working for. <br><br>
 
-                I also believe in forming a "connection" with customers, in order to warm relations and ensure they feel comfortable and confident with
-                myself and whatever team I'm apart of. <br><br>
+                I also believe in engaging with others in meaningful and impactful ways.<br><br>
 
                 If you'd like some casual fun facts about myself outside of work, click the button below:
                 </p>
@@ -53,7 +52,7 @@
                     <!--Transcript will eventually go here-->
                     <div class="container">
                         <span id="more" class="spanP">
-                            <ul style="font-size: 19px;;">
+                            <ul style="font-size: 19px;">
                                 <li>My favorite color is <strong style="color: red;">red</strong>.</li>
                                 <li>I used to be a Barista. My favorite coffee blend is currently Starbuck Reserve's "Whiskey Barrel Aged Cold Brew".</li>
                                 <li>Despite getting into it late, I'm a big fan of the MCU. From the MCU, my favorite character is Tony Stark/Iron Man.</li>
@@ -63,7 +62,7 @@
                                 <img src="{{ url_for('static', filename='img/rockclimbing.jpeg')}}" style="width: auto; max-width: 310px; height: auto; max-height: 545px; position: relative;">
                                 <p style="font-size: 14px;"><i>Wow, look at me go. Little do you know it's actually a V1!</i></p>
                             </div>
-                            <ul style="font-size: 19px;;">
+                            <ul style="font-size: 19px;">
                                 <li>Despite being a Tony Stark/Iron Man fan, my favorite MCU movie is "Guardians of the Galaxy".</li>
                                 <li>I wanted to be an astronomer when I was little since space fascinated me so much back then. It still fascinates me today.</li>
                                 <li>I'm plagued with the "finding a new song and listening to it on repeat until you get sick of it" disease, which sucks because I wanted to put my favorite song here.</li>
@@ -73,7 +72,7 @@
                                 <img src="{{ url_for('static', filename='img/lucy.jpeg')}}" style="width: auto; max-width: 512px; height: auto; max-height: 384px; position: relative;">
                                 <p><i>Obligatory picture of Lucy.</i></p>
                             </div>
-                            <ul style="font-size: 19px;;">
+                            <ul style="font-size: 19px;">
                                 <li>When it comes to nerd stuff (well, besides the MCU), I'm a huge fan of the Halo universe.</li>
                                 <li>The first program I ever wrote was basically a backdoor to a Minecraft server.</li>
                                 <li>Friends would review me as: "A more tame Michael Reeves", "Like a stupid Tony Stark", and "I don't want to say anything for you to put up on your stupid website, Darren".</li>
@@ -82,7 +81,7 @@
                                     been doing it like that for so long I'm in to deep.
                                 </li>
                             </ul>
-                            <p style="font-size: 19px;;">
+                            <p style="font-size: 19px;">
                             And that's the end of that! Now, let's dive into some actual interesting content here.
                             </p>
                         </span>
@@ -96,61 +95,22 @@
         <!--Story Time-->
         <div class="container spacer-25px">
             <h2 class="center-text spacer-25px unbold">
-                <span class="span-underline">My <strong style="color: red;">Programming</strong> Story</span>
+                <span class="span-underline">My <strong style="color: red;">Mission</strong> Statement</span>
             </h2>
-            <!--The Backdoor Story/"My First 'Hello World'"-->
-            <div class="container spacer-25px">
-                <h4 class="center-text spacer-25px unbold">
-                    <span class="span-underline">My first "Hello World"</span>
-                </h4>
-                <p style="font-size: 19px;;">
-                Everybody has a beginning. My beginning was June 5th, 2000. It was a Monday...<br><br>
-                Nah I'm just messing with you. <br><br>
-
-                The first program I ever wrote was back in 2013. I was thirteen year old at the time, and I was playing on a <i>Minecraft</i> multiplayer server with a few friends.
-                Neither one of us were hosting the server at the time, and it was a team-based server where you survive with friends while sabotaging other players.<br>
-                We weren't doing so hot as we we were being targetted by the other players due to our inexperience in such a setting. So I had a brilliant idea: <br><br>
-                <i>"If I were to somehow gain access to administrative privileges, we could rule the server!"</i> <br><br>
-
-                The server we were on was a Bukkit server. Bukkit is an open-source framework meant to extend the default Minecraft Server's functionality. It contains a built in API
-                which allows anyone to write Java code that the server can execute from in-game commands. While it's designed to be secure and safe, there are no protections in place
-                against plugins running detrimental code, such as a player executing an in-game command that causes the server to promote said player to have administrative status. <br><br>
-
-                I swiftly opened up a Google Chrome window and googled "How to code a force-op plugin with Bukkit", and to my 14 year old surprise I found what I was looking for:
-                a 20 minute tutorial video that guides you on interfacing with the Bukkit API in the Eclipse IDE, and how to actually set up such a plugin.<br><br>
-                </p>
-                <div class="center-text">
-                    <img src="https://www.gettingsmart.com/wp-content/uploads/2017/06/Program-Code-Feature-Image.jpg">
-                    <p><i>Despite this being JavaScript, the code I wrote pretty much looked like this.</i></p>
-                </div>
-                <p style="font-size: 19px;">
-                I remember spending at least an hour following that guide, not knowing what I was doing or what anything meant. But I was determined to create this plugin, and I had
-                all of the freetime in the world since it was a weekend. <br><br>
-
-                I eventually got the program to compile, and through some social engineering I managed to get the server owner to install the plugin. I ran the custom command I wrote
-                that would give myself administrative privileges, and to me shock and surprise it worked. <br><br>
-                
-                Looking back at it, 8 years later as a 21 year old. <strong style="color: red;">What I did was obviously very wrong. </strong>Instead of writing "System.out.print("Hello World")", my first program was a
-                a backdoor that granted me administrative powers. Thankfully, the only malicious act I did was just spawn in rare items and built ourselves a base beyond the server's set world border so we couldn't get
-                raided. <br><br>
-
-                The reason I share the story, despite it's origins as a 14 year old's "lust for power", is because it opened my eyes to what you could do with programming. While I felt like a "Hacker Man"
-                at the time, it was my first experience with building and deploying a piece of software with a real-world purpose and use case. It also taught me that anyone can program - you didn't have to be a
-                college student or child prodigy to understand how to code. <br><br>
-
-                <i>Also as if it isn't obvious: I never coded another backdoor like that ever again.</i>
-                </p>
+            <!--Markdown container for future changes-->
+            <div class="container spacer-25px markdown">
+                {{ text|markdown }}
             </div>
             <!--Modern Day-->
             <div class="container spacer-25px">
                 <h4 class="center-text unbold spacer-25px">
-                    <span class="span-underline">Modern Day Self</span>
+                    <span class="span-underline">My Programming Story</span>
                 </h4>
-                <p style="font-size: 19px;;">
+                <p style="font-size: 19px;">
                     After learning the basics of JavaScript in my high school's "Intro to Programming" elective course and falling in love with programming during that year,
                     I decided to major in Computer Science at University. At New York University, I learned Python, data structures and algorithms, and C++. <br><br>
                     
-                    Outside of school, I also strove to learn other languages: <br><br> 
+                    Outside of school, I also strive to learn other languages: <br><br> 
                     
                     Back in 2019, I learned Java more in depth for a massive side project/business I was planning
                     with a few friends who weren't programmers: the LW Network. It was this project that I got write code that had to be ran 24/7, and I would also learn
@@ -161,13 +121,13 @@
                     I'm a bit overcritical of my own work, and actively seek out peer review to ensure what I choose to publish on Github isn't terrible. <br><br>
 
                     I struggled a bit with C++, as Python was the first language I would consider myself "fluent" in. That being said, I've come to fall in love with C++ after working on a few
-                    side projects that forced me to stop thinking in terms of C++98 (which is essentially the course work at NYU Tandon). I'd consider my first proper program in C++ to be my attempt
+                    side projects. I'd consider my first proper program in C++ to be my attempt
                     at recreating the "Petals Around the Rose" game on my GitHub, which I haven't had time to go back and edit as I'm working on a Blockchain implementation based off of Free Code Academy's
                     Python Blockchain (which I transliterated into C++ and got it to work!). I plan on eventually branching that out into a small cryptocurrency to use amongst friends as a form of 
                     "Monopoly Play Money". Y'know, to make Poker Nights a bit more intense. <br><br>
 
                     And finally, in 2021, I decided to start building a website with Flask in order to better understand HTMl5 and the Flask framework. Now this site is effectively static, but it'll eventually have
-                    some dynamic content as a sort of puzzle game inspired by Cicada-3301's puzzles. Currently, it's main purpose is an online resumé, a place to showcase my work, and a medium for people to recommend me
+                    some dynamic content as a sort of puzzle game inspired by Cicada-3301's puzzles. Currently, it's main purpose is an online résumé, a place to showcase my work, and a medium for people to recommend me
                     with.<br><br> 
                     
                     It also serves as a way for old friends to find my up-to-date information in the event they wish to reconnect for whatever reason - don't be afraid to reach out!

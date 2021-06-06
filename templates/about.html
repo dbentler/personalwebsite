@@ -20,7 +20,6 @@
             <p style="font-size: 19px;">
                 Hey there! As you already (hopefully) know, my name is Darren Bentler. I'm a 21 year old ex-barista, and aspiring software engineer from South Huntington, New York. <br><br>
 
-                This "About Me" page is going to be more casual than professional, as it's meant to focus on who I am as a person. <br>
                 Whether you're a potential employer who wants to know more about who me, or an old friend who's curious on what I'm up to these days, feel free to read! <br> <br>
                 Also, if you have any feedback on the website or just want to get in touch, feel free to contact me via email or through a text/phone call (both can be found at the bottom of the home page). <br> <br>
 
@@ -66,7 +65,7 @@
                                 <li>Despite being a Tony Stark/Iron Man fan, my favorite MCU movie is "Guardians of the Galaxy".</li>
                                 <li>I wanted to be an astronomer when I was little since space fascinated me so much back then. It still fascinates me today.</li>
                                 <li>I'm plagued with the "finding a new song and listening to it on repeat until you get sick of it" disease, which sucks because I wanted to put my favorite song here.</li>
-                                <li>I have a pet rabbit named Lucy! At the time of writing this, she's currently 3 years old.</li>
+                                <li>I have a pet rabbit named Lucy! At the time of writing this, she's currently 4 years old.</li>
                             </ul>
                             <div class="container center-text">
                                 <img src="{{ url_for('static', filename='img/lucy.jpeg')}}" style="width: auto; max-width: 512px; height: auto; max-height: 384px; position: relative;">
@@ -76,13 +75,9 @@
                                 <li>When it comes to nerd stuff (well, besides the MCU), I'm a huge fan of the Halo universe.</li>
                                 <li>The first program I ever wrote was basically a backdoor to a Minecraft server.</li>
                                 <li>Friends would review me as: "A more tame Michael Reeves", "Like a stupid Tony Stark", and "I don't want to say anything for you to put up on your stupid website, Darren".</li>
-                                <li>Oxford Comma until the day I die.</li>
-                                <li>On the topic of the Oxford Comma, yes I know I put my puncuation outside of quotation marks. Yes, I know this isn't the American English way. No, I'm not British. I've just
-                                    been doing it like that for so long I'm in to deep.
-                                </li>
                             </ul>
                             <p style="font-size: 19px;">
-                            And that's the end of that! Now, let's dive into some actual interesting content here.
+                            And that's the end of that! Let's continue to the mission statement...
                             </p>
                         </span>
                     </div>
@@ -102,40 +97,9 @@
                 {{ text|markdown }}
             </div>
             <!--Modern Day-->
-            <div class="container spacer-25px">
-                <h4 class="center-text unbold spacer-25px">
-                    <span class="span-underline">My Programming Story</span>
-                </h4>
-                <p style="font-size: 19px;">
-                    After learning the basics of JavaScript in my high school's "Intro to Programming" elective course and falling in love with programming during that year,
-                    I decided to major in Computer Science at University. At New York University, I learned Python, data structures and algorithms, and C++. <br><br>
-                    
-                    Outside of school, I also strive to learn other languages: <br><br> 
-                    
-                    Back in 2019, I learned Java more in depth for a massive side project/business I was planning
-                    with a few friends who weren't programmers: the LW Network. It was this project that I got write code that had to be ran 24/7, and I would also learn
-                    how to interact with linux servers remotely via Putty. <br><br>
-
-                    In 2020, after COVID-19 arrived in New York and we entered self-isolation, I started learning how to create my own games. Now, I'm not a game developer, but working
-                    with Unity gave me the drive I needed to actually learn C# fundamentals. While I haven't finished a game, I am working on a simple 3D platformer that may be released eventually.
-                    I'm a bit overcritical of my own work, and actively seek out peer review to ensure what I choose to publish on Github isn't terrible. <br><br>
-
-                    I struggled a bit with C++, as Python was the first language I would consider myself "fluent" in. That being said, I've come to fall in love with C++ after working on a few
-                    side projects. I'd consider my first proper program in C++ to be my attempt
-                    at recreating the "Petals Around the Rose" game on my GitHub, which I haven't had time to go back and edit as I'm working on a Blockchain implementation based off of Free Code Academy's
-                    Python Blockchain (which I transliterated into C++ and got it to work!). I plan on eventually branching that out into a small cryptocurrency to use amongst friends as a form of 
-                    "Monopoly Play Money". Y'know, to make Poker Nights a bit more intense. <br><br>
-
-                    And finally, in 2021, I decided to start building a website with Flask in order to better understand HTMl5 and the Flask framework. Now this site is effectively static, but it'll eventually have
-                    some dynamic content as a sort of puzzle game inspired by Cicada-3301's puzzles. Currently, it's main purpose is an online résumé, a place to showcase my work, and a medium for people to recommend me
-                    with.<br><br> 
-                    
-                    It also serves as a way for old friends to find my up-to-date information in the event they wish to reconnect for whatever reason - don't be afraid to reach out!
-                </p>
-                <div class="container center-text">
-                    <img src="{{ url_for('static', filename='img/me_beach.JPG')}}" style="width: auto; max-width: 512px; height: auto; max-height: 384px; position: relative;">
-                    <p style="font-size: 14px;"><i>Random picture to balance the wall of text.</i></p>
-                </div>
+            <div class="container center-text">
+                <img src="{{ url_for('static', filename='img/me_beach.JPG')}}" style="width: auto; max-width: 512px; height: auto; max-height: 384px; position: relative;">
+                <p style="font-size: 14px;"><i>Random picture to balance the wall of text.</i></p>
             </div>
         </div>
         <div class="container spacer-25px">

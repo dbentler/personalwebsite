@@ -8,4 +8,4 @@ Development currently takes place on the websiteDev branch. Here, I work on impl
 
 # Website Roadmap
 With the Summer of 2021 coming to a close and my life slowing down, I plan on continuing updating and adding features to the website. If you'd like to know what these changes are, you can find the roadmap of features
-I plan to add [here](/markdown/roadmap.md)
+I plan to add [here](/markdown/roadmap.md).

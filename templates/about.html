@@ -15,15 +15,18 @@
                 </span>
             </h2>
         </div>
+        <div class="container spacer-25px">
+            <image src="{{ url_for('static', filename='img/profile_pic.png') }}" class="center">
+                <p class="center-text">Where'd the color go?</p>
+        </div>
         <!--About Me Text-->
         <div class="container center-text spacer-25px">
             <p style="font-size: 19px;">
                 Hey there! As you already (hopefully) know, my name is Darren Bentler. I'm a 21 year old ex-barista, and aspiring software engineer from South Huntington, New York. <br><br>
 
                 Whether you're a potential employer who wants to know more about who me, or an old friend who's curious on what I'm up to these days, feel free to read! <br> <br>
-                Also, if you have any feedback on the website or just want to get in touch, feel free to contact me via email or through a text/phone call (both can be found at the bottom of the home page). <br> <br>
+                Also, if you have any feedback on the website or just want to get in touch, feel free to contact me via email! <br> <br>
 
-                <i>I plan on eventually adding an "About Me" video here at some point to better illustrate who I am sometime in the future.</i>
             </p>
         </div>
         <!--Who am I-->
@@ -54,7 +57,6 @@
                             <ul style="font-size: 19px;">
                                 <li>My favorite color is <strong style="color: red;">red</strong>.</li>
                                 <li>I used to be a Barista. My favorite coffee blend is currently Starbuck Reserve's "Whiskey Barrel Aged Cold Brew".</li>
-                                <li>Despite getting into it late, I'm a big fan of the MCU. From the MCU, my favorite character is Tony Stark/Iron Man.</li>
                                 <li>I like rock climbing, but I'm pretty bad at it. I can barely do a V3.</li>
                             </ul>
                             <div class="container center-text">
@@ -62,9 +64,8 @@
                                 <p style="font-size: 14px;"><i>Wow, look at me go. Little do you know it's actually a V1!</i></p>
                             </div>
                             <ul style="font-size: 19px;">
-                                <li>Despite being a Tony Stark/Iron Man fan, my favorite MCU movie is "Guardians of the Galaxy".</li>
                                 <li>I wanted to be an astronomer when I was little since space fascinated me so much back then. It still fascinates me today.</li>
-                                <li>I'm plagued with the "finding a new song and listening to it on repeat until you get sick of it" disease, which sucks because I wanted to put my favorite song here.</li>
+                                <li>I'm cursed with "Listen to a song until you're sick of it", so my favorite song changes quite frequently.</li>
                                 <li>I have a pet rabbit named Lucy! At the time of writing this, she's currently 4 years old.</li>
                             </ul>
                             <div class="container center-text">
@@ -72,9 +73,8 @@
                                 <p><i>Obligatory picture of Lucy.</i></p>
                             </div>
                             <ul style="font-size: 19px;">
-                                <li>When it comes to nerd stuff (well, besides the MCU), I'm a huge fan of the Halo universe.</li>
-                                <li>The first program I ever wrote was basically a backdoor to a Minecraft server.</li>
-                                <li>Friends would review me as: "A more tame Michael Reeves", "Like a stupid Tony Stark", and "I don't want to say anything for you to put up on your stupid website, Darren".</li>
+                                <li>I geek out on the expanded Halo universe, owned by Microsoft and managed by 343 Industries.</li>
+                                <li>I can't dance.</li>
                             </ul>
                             <p style="font-size: 19px;">
                             And that's the end of that! Let's continue to the mission statement...
@@ -97,13 +97,6 @@
                 {{ text|markdown }}
             </div>
             <!--Modern Day-->
-            <div class="container center-text">
-                <img src="{{ url_for('static', filename='img/me_beach.JPG')}}" style="width: auto; max-width: 512px; height: auto; max-height: 384px; position: relative;">
-                <p style="font-size: 14px;"><i>Random picture to balance the wall of text.</i></p>
-            </div>
-        </div>
-        <div class="container spacer-25px">
-
         </div>
         <!--Youtube video container. Copy and pasted embeded source when video is ready-->
         <div class="container spacer-25px">

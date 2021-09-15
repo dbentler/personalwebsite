@@ -47,14 +47,6 @@ def crypto():
     content = renderMarkdown("markdown/crypto.md")
     return render_template("crypto.html", text=content)
 
-@app.route("/qna")
-def qna():
-    return render_template("qna.html")
-
-@app.route("/qna/personal")
-def qnapersonal():
-    return render_template("qnapersonal.html")
-
 @app.route("/contact")
 def contact():
     return render_template("contact.html")

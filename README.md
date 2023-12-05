@@ -1,6 +1,8 @@
 # https://www.darrenbentler.com/
 My personal portfolio/devblog site, created with Flask, Bootstrap, and HTML5.
 
+# UPDATE 12/4/2023 - Something broke dependency wise. The website is being written, and will probably be launched in 2024.
+
 The website is currently hosted on the Google App Engine, which is linked to this repository to automatically update whenever a new push/merge to main is created.
 
 # Development

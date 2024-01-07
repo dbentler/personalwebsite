@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import NavigationBar from './components/Navbar/Navbar';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    <NavigationBar/>
     <App />
   </React.StrictMode>
 );

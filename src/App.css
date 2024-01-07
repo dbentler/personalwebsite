@@ -3,6 +3,32 @@
   font-family: Courier New, Courier, monospace;
 }
 
+h1{
+  padding-bottom: 8px;
+}
+
+h2{
+  padding-bottom: 8px;
+}
+
+h4{
+  padding-bottom: 8px;
+}
+
+span {
+  display: inline-block;
+  border-bottom: 1px solid #505050;
+  padding-bottom: 2px;
+}
+
+.paragraph{
+  font-size: 20px;
+}
+
+.redText{
+  color: red;
+}
+
 .icon{
   width: auto;
   max-width: 120px;
@@ -20,10 +46,4 @@
 .center-text {
   text-align: center;
   color: #282828;
-}
-
-.span-underline {
-  display: inline-block;
-  border-bottom: 1px solid #505050;
-  padding-bottom: 2px;
 }

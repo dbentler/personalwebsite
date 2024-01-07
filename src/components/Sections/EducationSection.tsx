@@ -1,5 +1,5 @@
 import fakeDb from "../../api/fakeDb";
-import EducationTemplate from "../EducationTemplate/EducationTemplate";
+import EducationTemplate from "../Templates/EducationTemplate";
 
 const EducationSection = () => {
 

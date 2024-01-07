@@ -80,3 +80,14 @@ li{
 .navigation{
   background-color: rgb(33, 37, 41);
 }
+
+.projects-img{
+  width: auto; 
+  max-width: 768px; 
+  height: auto; 
+  max-height: 576px;
+}
+
+.headshot{
+  margin-bottom: 16px;
+}

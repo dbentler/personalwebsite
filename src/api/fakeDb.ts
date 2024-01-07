@@ -90,7 +90,46 @@ const fakeDb: FakeDb = {
                 "Oversaw the deployment of both the website and MySQL database on the Google App Engine via the Google Cloud Platform."
             ]
         }
+    ],
+
+    "Projects": [
+        {
+            title: 'Rendering the NYC Subway System via GTFS Data',
+            image: 'img/nyc_subway.png',
+            joke: '',
+            github: 'https://github.com/dbentler/NYC-Subway-From-GTFS-Data',
+            about: "A small project I made with Python. It parses through GTFS (General Transit Feed Specification) data in order to render a map of the NYC subway system. It's pretty simple to understand, but the output is pretty neat.",
+            readmore: "https://github.com/dbentler/NYC-Subway-From-GTFS-Data/blob/master/nyc-gtfs.md"
+        },
+        {
+            title: 'Silicoin - A C++ Blockchain Implementation',
+            image: 'img/crypto.png',
+            joke: 'Sick logo, I know',
+            github: "https://github.com/dbentler/fccCoin_in_CPP",
+            about: "My cryptocurrency adventure with C++. Through this project, I work on creating a working blockchain, implement proof of work, and I eventually expand my scope to process transactions.",
+            readmore: "https://github.com/dbentler/fccCoin_in_CPP/blob/main/crypto.md"
+        },
+        {
+            title: 'The LW Network',
+            image: 'img/lw_network.png',
+            joke: 'Image of some code from LW-Core',
+            github: 'https://github.com/dbentler/LW-Core',
+            about: "The LW-Network was a business started by me and three friends. From June 2019 - December 2019, we amassed a community of hundreds of members, and I was in charge of our servers and local development. It was through the LW-Network that I learned about Git and version control, and had the opportunity to develop features requested by both our volunteer team, and players.",
+            readmore: "https://github.com/dbentler/LW-Core/blob/master/lw-network.md"
+        },
     ]
 };
+
+
+/*
+TODO: Convert the old HTML article to Markdown for the personal website blog entry.
+{
+    title: 'darrenbentler.com',
+    image: 'img/new_banner_2.png',
+    github: 'https://github.com/dbentler/personalwebsite/',
+    about: "",
+    readmore: ""
+},
+*/
 
 export default fakeDb;

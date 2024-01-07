@@ -1,5 +1,5 @@
 import fakeDb from "../../api/fakeDb";
-import ExperienceTemplate from "../ExperienceTemplate/ExperienceTemplate";
+import ExperienceTemplate from "../Templates/ExperienceTemplate";
 
 const ExperienceSection = () => {
 

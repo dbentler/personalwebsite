@@ -4,8 +4,10 @@
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build']
 
-artifacts:
-  # This deploys the contents of the 'build' directory to App Engine
-  deploy:
-    - 'app.yaml'
-    - 'build/**'
+  # Deploy to Google App Engine
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy']
+
+# Use the latest version of the Cloud SDK
+images:
+  - 'gcr.io/cloud-builders/gcloud:latest'

@@ -1,4 +1,3 @@
-import React from "react";
 import SkillSubsectionGenerator from "../SkillSubsectionGenerator/SkillSubsectionGenerator";
 
 function SkillsSection(){

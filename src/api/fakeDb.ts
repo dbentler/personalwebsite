@@ -6,7 +6,7 @@ API and GET requests for something as simple as my portfolio website (minus savi
 
 This still accomplishes one of my main goals for this rewrite though: make it so updating Skills and Experience would not require having to write more HTML.
 
-If you're an Interviewer or Hiring Manager looking at this file though, I think we could have an interesting conversation on HOW I would've implemented a 
+If you're an Interviewer or Hiring Manager looking at this file though, I think we could have an interesting conversation on how I would've implemented a 
 proper data driven solution for the below information!
 */
 
@@ -64,6 +64,31 @@ const fakeDb: FakeDb = {
             location: 'South Huntington, New York',
             completed: 'June 2018',
             certificate: 'New York Regents High School Diploma with Advanced Designation in Science'
+        }
+    ],
+
+    'Experience': [
+        {
+            company: 'biBERK Business Insurance',
+            location: 'Wilkes-Barre, Pennsylvania',
+            role: 'Full Stack Software Engineer',
+            dates: 'August 2022 - Present',
+            accomplishments: [
+                "Crafted and implemented a data-driven solution for the validation of Worker Compensation policies utilizing Angular, C# .NET, and Entity Framework, ensuring seamless compliance with a diverse set of State laws.",
+                "Pioneered the development of an intuitive, in-house web-based configuration tool leveraging Azure Cosmos DB, C# .NET, Azure Functions, and Angular - empowering product owners, business analysts, and developers to efficiently manage underwriting questions with integrated validation for embedded logical expressions and conditionals.",
+                "Revitalized and optimized critical SQL stored procedures, slashing execution times from multiple minutes to mere seconds, which resulted in significantly elevated producer and customer satisfaction during the policy purchasing process."
+            ]
+        },
+        {
+            company: 'Dice Habit',
+            location: 'Los Angeles, California',
+            role: 'Full Stack Software Engineer (Part-time)',
+            dates: 'May 2022 - November 2022',
+            accomplishments: [
+                "Orchestrated the development of a tailored website allowing retailers to effortlessly access and customize specialty dice orders.",
+                "Leveraged React's component-based architecture to create a modular and scalable solution tailored to client specifications.",
+                "Oversaw the deployment of both the website and MySQL database on the Google App Engine via the Google Cloud Platform."
+            ]
         }
     ]
 };

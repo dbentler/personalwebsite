@@ -1,4 +1,3 @@
-import React from "react";
 import fakeDb from "../../api/fakeDb";
 import EducationTemplate from "../EducationTemplate/EducationTemplate";
 
@@ -14,8 +13,11 @@ const EducationSection = () => {
                 </span>
             </h2>
             {educationData.map((education, index) => (
-                <EducationTemplate key={index} name={education.name} location={education.location} 
-                completed={education.completed} certificate={education.certificate}/>
+                <EducationTemplate key={index} 
+                                   name={education.name} 
+                                   location={education.location} 
+                                   completed={education.completed} 
+                                   certificate={education.certificate}/>
             ))}
         </div>
     )

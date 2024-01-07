@@ -15,11 +15,31 @@ h4{
   padding-bottom: 8px;
 }
 
+h5{
+  padding-bottom: 8px;
+}
+
+
 span {
   display: inline-block;
   border-bottom: 1px solid #505050;
   padding-bottom: 2px;
 }
+
+li{
+  padding-bottom: 8px;
+}
+
+.buttons-container{
+  padding-bottom: 16px;
+  text-align: center;
+}
+
+.btn-dark{
+  margin-right: 8px !important;
+  margin-bottom: 8px;
+}
+
 
 .row {
   padding-bottom: 16px;

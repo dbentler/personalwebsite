@@ -21,6 +21,15 @@ span {
   padding-bottom: 2px;
 }
 
+.row {
+  padding-bottom: 16px;
+}
+
+.exposition{
+  font-size: 18px;
+  padding-bottom: 16px;
+}
+
 .paragraph{
   font-size: 20px;
 }

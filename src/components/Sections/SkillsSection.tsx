@@ -1,5 +1,5 @@
 import React from "react";
-import SkillSubsectionGenerator from "../skill-subsection-generator/skill-subsection-generator";
+import SkillSubsectionGenerator from "../SkillSubsectionGenerator/SkillSubsectionGenerator";
 
 function SkillsSection(){
 
@@ -12,6 +12,8 @@ function SkillsSection(){
             </h2>
             <div className='justify-content-center'>
             <SkillSubsectionGenerator subsectionName='Languages'/>
+            <SkillSubsectionGenerator subsectionName='Software'/>
+            <SkillSubsectionGenerator subsectionName='Frameworks'/>
             </div>
         </div>
     )

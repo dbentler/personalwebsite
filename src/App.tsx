@@ -1,5 +1,5 @@
 import './App.css';
-import SkillSubsectionGenerator from './components/skill-subsection-generator/skill-subsection-generator';
+import EducationSection from './components/Sections/EducationSection';
 import IntroductionSection from './components/Sections/IntroductionSection';
 import SkillsSection from './components/Sections/SkillsSection';
 
@@ -9,6 +9,7 @@ function App() {
     <div className='container'>
       <IntroductionSection/>
       <SkillsSection/>
+      <EducationSection/>
     </div>
   );
 }

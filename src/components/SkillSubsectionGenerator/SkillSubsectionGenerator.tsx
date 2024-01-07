@@ -1,4 +1,5 @@
-import IconImage from '../icon-image/icon-image';
+import fakeDb from '../../api/fakeDb';
+import IconImage from '../IconImage/IconImage';
 
 interface SkillSubsectionGeneratorProps {
     subsectionName: string;
@@ -7,17 +8,7 @@ interface SkillSubsectionGeneratorProps {
 const SkillSubsectionGenerator: React.FC<SkillSubsectionGeneratorProps> = ({ subsectionName }) => {
 
     // TODO: Refactor this data into a data driven solution.
-    const data = [
-        { imageUrl: 'img/Python.png', name: 'Python'},
-        { imageUrl: 'img/csharp.png', name: 'C#'},
-        { imageUrl: 'img/typescript.png', name: 'TypeScript'},
-        { imageUrl: 'img/javascript.png', name: 'JavaScript'},
-        { imageUrl: 'img/c.png', name: 'C'},
-        { imageUrl: 'img/cpp.png', name: 'C++'},
-        { imageUrl: 'img/java.png', name: 'Java'},
-        { imageUrl: 'img/html.png', name: 'HTML5'},
-        { imageUrl: 'img/css.png', name: 'CSS'},
-      ];
+    const data = fakeDb[subsectionName];
       
     return (
         <div>

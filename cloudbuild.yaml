@@ -4,10 +4,7 @@
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build']
 
-  # Deploy to Google App Engine
+  # Deploy to App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
-
-# Use the latest version of the Cloud SDK
-images:
-  - 'gcr.io/cloud-builders/gcloud:latest'
+    timeout: '1600s'  # Extend the timeout if needed

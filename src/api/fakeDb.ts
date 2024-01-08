@@ -74,9 +74,12 @@ const fakeDb: FakeDb = {
             role: 'Full Stack Software Engineer',
             dates: 'August 2022 - Present',
             accomplishments: [
-                "Crafted and implemented a data-driven solution for the validation of Worker Compensation policies utilizing Angular, C# .NET, and Entity Framework, ensuring seamless compliance with a diverse set of State laws.",
+                "Implemented a data-driven solution for the validation of Worker Compensation policies utilizing Angular, C# .NET, and Entity Framework, ensuring seamless compliance with a diverse set of State laws.",
+                "Engineered a data-driven validation framework for producer account configurations using C# .NET, Entity Framework, and MySQL, resulting in a noticeable 99% decrease in production issues involving producer accounts and policy creation.",
                 "Pioneered the development of an intuitive, in-house web-based configuration tool leveraging Azure Cosmos DB, C# .NET, Azure Functions, and Angular - empowering product owners, business analysts, and developers to efficiently manage underwriting questions with integrated validation for embedded logical expressions and conditionals.",
-                "Revitalized and optimized critical SQL stored procedures, slashing execution times from multiple minutes to mere seconds, which resulted in significantly elevated producer and customer satisfaction during the policy purchasing process."
+                "Revitalized and optimized critical SQL stored procedures, slashing execution times from multiple minutes to mere seconds, which resulted in significantly elevated producer and customer satisfaction during the policy purchasing process.",
+                "Oversaw daily standups, sprint plannings, and collaborated with cross-functional teams to ensure tasks were completed promptly and deadlines were consistently met in a dynamic Agile setting.",
+                "Delivered proactive support and triage for production environment issues, extending assistance to both internal biBERK teams, as well as business partners leveraging biBERK's 'Partner API', ensuring seamless operations and fostering strong collaborative relationships."
             ]
         },
         {

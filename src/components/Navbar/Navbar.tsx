@@ -10,7 +10,6 @@ const NavigationBar = () => {
                     <Navbar.Brand className='navigation' href="/">Darren Bentler</Navbar.Brand>
                     <Nav className="me-auto navigation">
                         <Nav.Link className='navigation' href="/">Home</Nav.Link>
-                        <Nav.Link className='navigation' href="projects">Projects</Nav.Link>
                         <Nav.Link className='navigation' href="img/DarrenBentler_Resume.pdf">Download Résumé</Nav.Link>
                     </Nav>
                 </Container>

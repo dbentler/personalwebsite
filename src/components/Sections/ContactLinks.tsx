@@ -12,7 +12,7 @@ const ContactLinks = () => {
             </div>
             <div className="buttons-container">
                 <Button variant="dark" size='lg' href="https://github.com/dbentler">Github (Programming, Source Code)</Button>
-                <Button variant="dark" size='lg' href="projects">Projects (Blog, Programming)</Button>
+                <Button variant="dark" size='lg' href="/projects">Projects (Blog, Programming)</Button>
             </div>
 
             <div className="center">

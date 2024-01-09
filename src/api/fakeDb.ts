@@ -39,7 +39,7 @@ const fakeDb: FakeDb = {
         { imageUrl: 'img/azure.svg', name: 'Microsoft Azure'},
         { imageUrl: 'img/appengine.png', name: 'Google Cloud Platform'},
         { imageUrl: 'img/windows.png', name: 'Windows'},
-        { imageUrl: 'img/macos.png', name: 'macOS'},
+        { imageUrl: 'img/macOS.png', name: 'macOS'},
         { imageUrl: 'img/linux.png', name: 'Linux'},
         { imageUrl: 'img/adobe.png', name: 'Adobe Creative Suite'},
     ],

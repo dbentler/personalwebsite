@@ -20,9 +20,9 @@ const IntroductionSection = () => {
                 <img className='headshot' src="img/village-darren-modified.png" alt=""/>
             </div>
             <p className="paragraph">
-                Welcome! I'm Darren Bentler, a professional software engineer with 2 years of experience building scalable and maintainable enterprise applications.
+                Welcome! I'm Darren Bentler, a professional software engineer with {yearsOfExperience} years of experience building scalable and maintainable enterprise applications.
                 <br/><br/>
-                Feel free to look around the site. You can find a direct link to download my résumé in the navigation bar above. If time is short, continue scrolling for more "elevator pitch" style information.
+                Feel free to look around the site. You can find a direct link to download my resume in the navigation bar above. If time is short, continue scrolling for more "elevator pitch" style information.
                 <br/><br/>
                 <i>For the best experience, I recommmend viewing the website on a desktop.</i>
             </p>

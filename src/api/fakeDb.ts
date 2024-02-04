@@ -71,7 +71,7 @@ const fakeDb: FakeDb = {
         {
             company: 'biBERK Business Insurance',
             location: 'Wilkes-Barre, Pennsylvania',
-            role: 'Full Stack Software Engineer',
+            role: 'Software Engineer',
             dates: 'August 2022 - Present',
             accomplishments: [
                 "Implemented a data-driven solution for the validation of Worker Compensation policies utilizing Angular, C# .NET, and Entity Framework, ensuring seamless compliance with a diverse set of State laws.",

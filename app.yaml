@@ -1,22 +1,30 @@
 ﻿runtime: nodejs20
 
 handlers:
-# 1. First, handle all static files (CSS, JS, images, etc.)
+# 1. HANDLE BUNDLED ASSETS: Serves optimized JS/CSS files from the /static folder.
 - url: /static
   static_dir: build/static
   secure: always
   redirect_http_response_code: 301
 
-# 2. Add an explicit handler for the favicon if you have one
-- url: /favicon\.ico
-  static_files: build/favicon.ico
-  upload: build/favicon\.ico
+# 2. HANDLE CUSTOM ASSETS: Serves all files from your public/img directory (which is at build/img).
+- url: /img/(.*)
+  static_files: build/img/\1
+  upload: build/img/(.*)
   secure: always
   redirect_http_response_code: 301
 
-# 3. The CRITICAL FALLBACK HANDLER:
-#    This matches all other URLs (.*) and serves the main index.html file.
-#    This allows React Router to handle the URL on the client side.
+# 3. HANDLE ROOT ASSETS: Serves other static files (favicon.ico, manifest.json, fonts, etc.)
+#    This prevents these files from hitting the React Router fallback.
+- url: /(.*\.(gif|png|jpg|jpeg|svg|ico|css|js|eot|ttf|woff|woff2|map|json|xml|webmanifest))$
+  static_files: build/\1
+  upload: build/.*\.(gif|png|jpg|jpeg|svg|ico|css|js|eot|ttf|woff|woff2|map|json|xml|webmanifest)$
+  secure: always
+  redirect_http_response_code: 301
+
+# 4. REACT ROUTER FALLBACK (The SPA Fix):
+#    This is the catch-all. Any request that hasn't matched a file above 
+#    (e.g., a route like /projects) is served index.html, letting React Router take over.
 - url: /(.*)
   static_files: build/index.html
   upload: build/index.html

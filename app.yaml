@@ -1,12 +1,24 @@
 ﻿runtime: nodejs20
 
 handlers:
-- url: /
+# 1. First, handle all static files (CSS, JS, images, etc.)
+- url: /static
+  static_dir: build/static
+  secure: always
+  redirect_http_response_code: 301
+
+# 2. Add an explicit handler for the favicon if you have one
+- url: /favicon\.ico
+  static_files: build/favicon.ico
+  upload: build/favicon\.ico
+  secure: always
+  redirect_http_response_code: 301
+
+# 3. The CRITICAL FALLBACK HANDLER:
+#    This matches all other URLs (.*) and serves the main index.html file.
+#    This allows React Router to handle the URL on the client side.
+- url: /(.*)
   static_files: build/index.html
   upload: build/index.html
-
-- url: /(.*)
-  static_files: build/\1
-  upload: build/(.*)
   secure: always
   redirect_http_response_code: 301
